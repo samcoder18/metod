@@ -1,0 +1,6 @@
+.DS_Store
+.tmp/
+.playwright-mcp/
+node_modules/
+dist/
+.env

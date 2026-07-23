@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+Sitemap: __SITE_URL__/sitemap.xml
