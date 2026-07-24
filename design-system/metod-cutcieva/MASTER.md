@@ -70,6 +70,15 @@ Tailwind собирается статически, без CDN: `npx tailwindcss
 - Один лейбл одного интента: «Записаться» везде (header, hero, CTA)
 - Контакты в футере: кликабельные адрес (Яндекс.Карты), телефон, Telegram @olansmiles
 
+### Блог (`blog/`)
+- Хаб `blog/index.html` + 4 статьи по ЧПУ: `pochemu-bolit-spina`, `stress-v-tele`, `mify-o-massazhe`, `kak-ispravit-osanku` (директория + index.html). Тексты и SEO-мета (title/description/H1/ЧПУ/alt) — из ТЗ заказчика, не менять без согласования
+- Общие стили блога в `assets/blog.css` (подключается после tailwind.min.css): типографика `.article-body` (18px/1.8, measure 720px), `.article-toc` (sticky-оглавление ≥1280px со scroll-spy), `.post-card`, `.author-card`, `.article-faq`, `.article-sources`, `.read-progress`, `.grain`
+- Структура статьи: breadcrumbs → hero (H1 `max-w-4xl`, лид Cormorant italic с пословным scrub-reveal, мета: автор/дата/время) → hero-фото → сетка `xl:grid-cols-12`: оглавление + текст → FAQ → источники (сноски `<sup>` → `#src-N`) → дисклеймер → блок автора (E-E-A-T) → CTA → «Читайте также» (2 карточки + ссылки на услуги `/#tekhniki`)
+- Schema.org на каждой странице: Article (+FAQPage, BreadcrumbList), на хабе Blog + BreadcrumbList. Даты: published 2026-07-22, modified 2026-07-24
+- Моушн: те же GSAP + Lenis (CDN), data-reveal, прогресс чтения, hero-фото scale по скроллу; без `overflow-x-hidden` на `<main>` (ломает position: sticky оглавления)
+- Ссылка-карточка `.post-card-link` — stretched-link (`position: absolute; inset: 0`), чтобы пустой `<a>` не занимал ячейку grid
+- `tailwind.config.js` content включает `./blog/**/*.html` — после правок классов пересобирать CSS; `scripts/build.mjs` подставляет `__SITE_URL__` рекурсивно во все `blog/**/*.html`
+
 ### Avoid (Anti-patterns)
 - Светлые секции внутри страницы, смена темы посередине
 - Номерные eyebrows (`01 — Суть метода`), scroll-cue («Scroll», «↓»), декоративные точки

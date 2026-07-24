@@ -49,8 +49,21 @@ if (siteUrl && !/^https?:\/\//.test(siteUrl)) {
   process.exit(1);
 }
 
-/* Файлы, в которых подставляем __SITE_URL__ */
+/* Файлы, в которых подставляем __SITE_URL__: корневые + все страницы блога */
+import { readdirSync } from 'node:fs';
+
 const templated = ['index.html', 'robots.txt', 'sitemap.xml', '404.html'];
+
+function collectHtml(dir, relBase) {
+  if (!existsSync(dir)) return;
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const rel = relBase ? `${relBase}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) collectHtml(join(dir, entry.name), rel);
+    else if (entry.name.endsWith('.html')) templated.push(rel);
+  }
+}
+collectHtml(join(root, 'blog'), 'blog');
+
 const placeholder = '__SITE_URL__';
 
 rmSync(dist, { recursive: true, force: true });
@@ -62,7 +75,9 @@ for (const file of templated) {
   let content = readFileSync(src, 'utf8');
   const count = content.split(placeholder).length - 1;
   content = content.split(placeholder).join(siteUrl);
-  writeFileSync(join(dist, file), content);
+  const out = join(dist, file);
+  mkdirSync(dirname(out), { recursive: true });
+  writeFileSync(out, content);
   console.log(`✓ ${file} — подстановок SITE_URL: ${count}`);
 }
 

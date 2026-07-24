@@ -601,6 +601,7 @@
         <a href="#obo-mne" class="nav-link hover:text-foreground transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Обо мне</a>
         <a href="#ceny" class="nav-link hover:text-foreground transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Цены</a>
         <a href="#voprosy" class="nav-link hover:text-foreground transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Вопросы</a>
+        <a href="blog/" class="nav-link hover:text-foreground transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Блог</a>
         <a href="#kontakty" class="nav-link hover:text-foreground transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Контакты</a>
       </nav>
       <a href="#zapis" class="magnetic inline-flex items-center justify-center min-h-[44px] px-6 border border-foreground/25 text-[13px] uppercase tracking-[0.14em] hover:border-accent hover:text-accent transition-colors duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
@@ -661,11 +662,14 @@
     </section>
 
     <!-- ══════════ С ЧЕМ ПРИХОДЯТ (accordion-полосы) ══════════ -->
-    <section class="px-6 lg:px-12 py-24 lg:py-36 border-t border-border">
+    <section class="px-6 lg:px-12 py-28 lg:py-44 border-t border-border">
       <div class="max-w-[1400px] mx-auto">
-        <h2 class="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-tight mb-12 lg:mb-16" data-reveal>
+        <h2 class="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-tight mb-6" data-reveal>
           С чем ко мне приходят
         </h2>
+        <p class="text-secondary max-w-xl leading-relaxed mb-12 lg:mb-16" data-reveal>
+          Четыре самых частых запроса. Если узнали свой — с ним уже можно работать.
+        </p>
 
         <div class="requests-accordion" data-reveal>
           <article class="request-strip" tabindex="0" role="button" aria-expanded="false" aria-label="Боль и напряжение в спине, шее, плечах">
@@ -707,17 +711,17 @@
               <p class="strip-desc">Медленные глубокие техники переключают нервную систему из режима защиты в режим восстановления.</p>
             </div>
           </article>
-          <article class="request-strip" tabindex="0" role="button" aria-expanded="false" aria-label="Желание глубоко расслабиться и перезагрузиться">
+          <article class="request-strip" tabindex="0" role="button" aria-expanded="false" aria-label="Анализы в норме, диагноза нет, а тело болит">
             <picture>
               <source srcset="assets/request-4.webp" type="image/webp">
-              <img src="assets/request-4.jpg" alt="Тёплый спокойный шёлк: расслабление и перезагрузка" loading="lazy" width="900" height="1200">
+              <img src="assets/request-4.jpg" alt="Тёплый спокойный шёлк: боль, к которой тело привыкло" loading="lazy" width="900" height="1200">
             </picture>
             <div class="strip-scrim" aria-hidden="true"></div>
-            <span class="strip-label" aria-hidden="true">Перезагрузка</span>
+            <span class="strip-label" aria-hidden="true">Анализы в норме</span>
             <div class="strip-body">
               <span class="strip-dash" aria-hidden="true"></span>
-              <h3>Перезагрузка</h3>
-              <p class="strip-desc">Lomi-Lomi и Палсинг дают полную остановку: тело отпускает, возвращаются покой и энергия.</p>
+              <h3>Анализы в норме, а болит</h3>
+              <p class="strip-desc">Врачи разводят руками: снимки чистые, диагноза нет. Причина почти всегда в мышцах и фасции — нахожу её руками.</p>
             </div>
           </article>
         </div>
@@ -898,7 +902,12 @@
     </section>
 
     <!-- ══════════ ОБО МНЕ ══════════ -->
-    <section id="obo-mne" class="px-6 lg:px-12 py-24 lg:py-40 border-t border-border">
+    <section id="obo-mne" class="px-6 lg:px-12 py-28 lg:py-44 border-t border-border">
+      <div class="max-w-[1400px] mx-auto">
+        <h2 class="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-tight mb-12 lg:mb-16" data-reveal>
+          О мастере
+        </h2>
+      </div>
       <div class="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
         <div class="lg:col-span-5">
           <div class="photo-frame relative overflow-hidden aspect-[3/4]">
@@ -911,9 +920,9 @@
           </div>
         </div>
         <div class="lg:col-span-5 lg:col-start-8 lg:pt-16">
-          <h2 class="font-display text-[clamp(2.25rem,3.2vw,3rem)] leading-[1.08] tracking-tight lg:whitespace-nowrap mb-10" data-reveal>
+          <h3 class="font-display text-[clamp(2.25rem,3.2vw,3rem)] leading-[1.08] tracking-tight lg:whitespace-nowrap mb-10" data-reveal>
             Цуциев Олег Аланович
-          </h2>
+          </h3>
           <p class="text-lg lg:text-xl text-foreground/75 leading-relaxed max-w-[52ch] mb-10" data-reveal>
             Я Олег, специалист по комплексной работе с телом со стажем 8 лет. Современная медицина великолепно лечит болезни, но часто теряется там, где болит не орган, а целый человек: в хроническом напряжении, усталости, боли без чёткого диагноза. Я работаю именно здесь — соединяя глубокие традиционные практики (Lomi-Lomi, палсинг) с методами, подтверждёнными современной наукой (триггерная и перкуссионная терапия, функциональное движение). Не «массаж по зонам», а целостная работа с телом, нервной системой и привычками движения. Моя цель — вернуть вам тело, которое не требует ремонта.
           </p>
@@ -1400,8 +1409,8 @@
         <h2 id="kontakty-title" class="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-tight mb-12 lg:mb-16" data-reveal>
           Контакты
         </h2>
-        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-stretch">
-          <address class="lg:col-span-4 contacts-address flex flex-col gap-8" data-reveal>
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-20 items-stretch">
+          <address class="lg:col-span-4 contacts-address flex flex-col gap-12" data-reveal>
             <div>
               <p class="text-[13px] uppercase tracking-[0.14em] text-secondary mb-2">Адрес</p>
               <a href="https://yandex.ru/maps/?text=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BA%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7%2C%20%D1%83%D0%BB.%20%D0%A0%D1%8F%D0%B1%D0%B8%D0%BD%D0%BE%D0%B2%D0%B0%201" target="_blank" rel="noopener" class="font-display text-xl lg:text-2xl leading-snug hover:text-accent transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Владикавказ, Вишневый Сад,<br>ул. Рябинова 1, салон «Филин»</a>
@@ -1414,7 +1423,7 @@
               <p class="text-[13px] uppercase tracking-[0.14em] text-secondary mb-2">Запись</p>
               <a href="https://t.me/olansmiles" target="_blank" rel="noopener" class="font-display text-xl lg:text-2xl leading-snug hover:text-accent transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Telegram: @olansmiles</a>
             </div>
-            <p class="text-secondary leading-relaxed max-w-md mt-auto">Отвечаю сам, обычно в течение пары часов. Если сомневаетесь, подойдёт ли вам мой формат, — просто напишите, разберёмся до записи.</p>
+            <p class="text-secondary leading-relaxed max-w-md mt-auto pt-6">Отвечаю сам, обычно в течение пары часов. Если сомневаетесь, подойдёт ли вам мой формат, — просто напишите, разберёмся до записи.</p>
           </address>
           <div class="lg:col-span-8 contacts-map-frame border border-border" data-reveal>
             <iframe src="https://yandex.ru/map-widget/v1/?ll=44.645470%2C43.032743&z=16&pt=44.645470%2C43.032743" title="Карта: Владикавказ, ул. Рябинова 1, салон «Филин»" class="w-full h-full contacts-map-iframe" loading="lazy" allowfullscreen></iframe>
