@@ -1,0 +1,71 @@
+/* ============================================================
+   mobile.css — мобильный слой лендинга (< 1024px)
+   Подключается ПОСЛЕ tailwind.min.css. Десктоп не затрагивается:
+   всё завёрнуто в @media (max-width: 1023px).
+   Система форм: карточки radius 12px, кнопки без скругления (как на десктопе).
+   ============================================================ */
+
+@media (max-width: 1023px) {
+
+  /* --- Форс-видимость десктопных анимационных начальных состояний --- */
+  html.anim [data-reveal],
+  html.anim .js-words .w,
+  html.anim .reveal-line > span,
+  html.anim .photo-frame,
+  html.anim .hero-bg {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  html.anim .photo-parallax {
+    transform: none !important;
+  }
+
+  /* --- Reveal-система (замена GSAP на мобильных) --- */
+  html.anim [data-m-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  html.anim [data-m-reveal="fade"] {
+    transform: none;
+  }
+  html.anim [data-m-reveal].m-is-in {
+    opacity: 1;
+    transform: none;
+  }
+  html.anim [data-m-reveal="stagger"] > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+  html.anim [data-m-reveal="stagger"].m-is-in > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* --- grain: статичный, без постоянного repaint --- */
+  .grain {
+    animation: none !important;
+  }
+
+  /* --- Плавный скролл к якорям (Lenis на мобильных выключен) --- */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (max-width: 1023px) and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html.anim [data-m-reveal],
+  html.anim [data-m-reveal="stagger"] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
