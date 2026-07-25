@@ -1,6 +1,6 @@
 /* mobile.js — мобильный слой (< 1024px). Подключается с defer. */
 (() => {
-  const mq = window.matchMedia('(max-width: 1023px)');
+  const mq = window.matchMedia('(max-width: 1023.98px)');
   if (!mq.matches) return;
 
   /* --- Фолбэк без IntersectionObserver: сразу показываем всё --- */

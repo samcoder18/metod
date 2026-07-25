@@ -1,12 +1,12 @@
 /* ============================================================
    mobile.css — мобильный слой лендинга (< 1024px)
    Подключается ПОСЛЕ tailwind.min.css. Десктоп не затрагивается:
-   всё завёрнуто в @media (max-width: 1023px).
+   всё завёрнуто в @media (max-width: 1023.98px).
    Система форм (применяется в секциях ниже по мере добавления):
    карточки radius 12px, кнопки без скругления.
    ============================================================ */
 
-@media (max-width: 1023px) {
+@media (max-width: 1023.98px) {
 
   /* --- Форс-видимость десктопных анимационных начальных состояний --- */
   html.anim [data-reveal],
@@ -117,7 +117,7 @@
   }
 }
 
-@media (max-width: 1023px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
