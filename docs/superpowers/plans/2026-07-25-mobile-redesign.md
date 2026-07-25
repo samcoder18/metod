@@ -282,7 +282,7 @@ Run: `grep -n 'hero-poster' index.html | head -3`
 - [ ] **Step 3: Добавить мобильный hero-блок**
 
 Сразу ПОСЛЕ закрывающего `</section>` десктопного hero (после строки 655, перед комментарием `══════════ МАНИФЕСТ`) вставить.
-H1 физически один (остаётся в десктопном hero); здесь — `aria-hidden` дубль (спека §3.2).
+H1 (уточнено после code review): на каждой ширине доступен ровно один — десктопный нетронут, здесь настоящий `<h1>` с sr-only префиксом (спека §3.2, редакция после review Task 3).
 
 ```html
     <!-- ══════════ HERO MOBILE ══════════ -->
@@ -298,7 +298,7 @@ H1 физически один (остаётся в десктопном hero); 
 
       <div class="px-6 pt-8 pb-12">
         <p class="text-[11px] uppercase tracking-[0.32em] text-accent mb-6" data-m-reveal>Индивидуальные сессии · Владикавказ</p>
-        <span class="m-hero-title font-display" aria-hidden="true" data-m-reveal>Метод<br>Цуциева<span class="text-accent">.</span></span>
+        <h1 class="m-hero-title font-display" data-m-reveal><span class="sr-only">Массаж и комплексная работа с телом во Владикавказе — </span>Метод<br>Цуциева<span class="text-accent">.</span></h1>
         <p class="text-lg text-secondary leading-relaxed mt-6 max-w-md" data-m-reveal>
           Персональный массаж и работа с телом во Владикавказе: снимаю боль и напряжение
           через биомеханику, возвращаю покой и энергию через глубокие телесные техники.
@@ -380,8 +380,8 @@ H1 физически один (остаётся в десктопном hero); 
 Run: `grep -c 'hero-mobile' index.html`
 Expected: `5` (preload, section id, 2 source, img src... минимум 4 — проверить ≥ 4).
 
-Run: `node -e "const h=require('fs').readFileSync('index.html','utf8'); const h1=(h.match(/<h1/g)||[]).length; if(h1!==1){console.error('FAIL: h1 count '+h1);process.exit(1)} console.log('OK: один h1')"`
-Expected: `OK: один h1`.
+Run: `node -e "const h=require('fs').readFileSync('index.html','utf8'); const h1=(h.match(/<h1/g)||[]).length; if(h1!==2){console.error('FAIL: h1 count '+h1);process.exit(1)} console.log('OK: два h1 (по одному на брейкпоинт)')"`
+Expected: `OK: два h1 (по одному на брейкпоинт)`.
 
 - [ ] **Step 6: Commit**
 
