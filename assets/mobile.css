@@ -255,6 +255,69 @@
     font-size: clamp(1.6rem, 5.5vw, 2.2rem) !important;
     line-height: 1.35 !important;
   }
+
+  /* --- Запросы: карточки вместо полос --- */
+  .requests-accordion {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .request-strip {
+    height: auto !important;
+    min-height: 0 !important;
+    flex: none !important;
+    display: flex;
+    flex-direction: column;
+    background: #171512;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .request-strip:nth-child(odd) {
+    margin-right: 1.5rem;
+  }
+  .request-strip:nth-child(even) {
+    margin-left: 1.5rem;
+  }
+  .request-strip picture {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    flex: none;
+  }
+  .request-strip picture img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .request-strip .strip-scrim,
+  .request-strip .strip-label,
+  .request-strip .strip-dash {
+    display: none !important;
+  }
+  .request-strip .strip-body {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+  .request-strip .strip-body h3 {
+    font-family: "Tenor Sans", serif;
+    font-size: 1.375rem;
+    line-height: 1.2;
+    color: #ECE7DE;
+    margin-bottom: 0.5rem;
+  }
+  .request-strip .strip-desc {
+    color: #9C968C;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
 }
 
 @media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {
