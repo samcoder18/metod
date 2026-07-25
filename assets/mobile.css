@@ -2,7 +2,8 @@
    mobile.css — мобильный слой лендинга (< 1024px)
    Подключается ПОСЛЕ tailwind.min.css. Десктоп не затрагивается:
    всё завёрнуто в @media (max-width: 1023px).
-   Система форм: карточки radius 12px, кнопки без скругления (как на десктопе).
+   Система форм (применяется в секциях ниже по мере добавления):
+   карточки radius 12px, кнопки без скругления.
    ============================================================ */
 
 @media (max-width: 1023px) {
@@ -22,7 +23,7 @@
   }
 
   /* --- Reveal-система (замена GSAP на мобильных) --- */
-  html.anim [data-m-reveal] {
+  html.anim [data-m-reveal]:not([data-m-reveal="stagger"]) {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),

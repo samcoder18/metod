@@ -3,6 +3,12 @@
   const mq = window.matchMedia('(max-width: 1023px)');
   if (!mq.matches) return;
 
+  /* --- Фолбэк без IntersectionObserver: сразу показываем всё --- */
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-m-reveal]').forEach((el) => el.classList.add('m-is-in'));
+    return;
+  }
+
   /* --- Reveal-observer (замена GSAP data-reveal) --- */
   document.querySelectorAll('[data-m-reveal="stagger"]').forEach((parent) => {
     [...parent.children].forEach((child, i) => child.style.setProperty('--i', i));
@@ -15,7 +21,7 @@
         mRevealIO.unobserve(e.target);
       }
     }
-  }, { threshold: 0.2 });
+  }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
 
   document.querySelectorAll('[data-m-reveal]').forEach((el) => mRevealIO.observe(el));
 })();
