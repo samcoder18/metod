@@ -266,13 +266,13 @@
   }
   .request-strip {
     height: auto !important;
-    min-height: 0 !important;
     flex: none !important;
     display: flex;
     flex-direction: column;
     background: #171512;
     border-radius: 12px;
     overflow: hidden;
+    cursor: default;
   }
   .request-strip:nth-child(odd) {
     margin-right: 1.5rem;
@@ -305,11 +305,10 @@
     position: static !important;
     opacity: 1 !important;
     transform: none !important;
-    visibility: visible !important;
     padding: 1.25rem 1.25rem 1.5rem;
   }
   .request-strip .strip-body h3 {
-    font-family: "Tenor Sans", serif;
+    font-family: "Tenor Sans", Georgia, serif;
     font-size: 1.375rem;
     line-height: 1.2;
     color: #ECE7DE;

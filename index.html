@@ -1803,13 +1803,32 @@
 
       /* ── Accordion-полосы: закреплённое раскрытие по клику и Enter/Space ── */
       (function () {
+        var stripsMq = window.matchMedia('(max-width: 1023.98px)');
+        function applyStripMode() {
+          document.querySelectorAll('.request-strip').forEach(function (strip) {
+            if (stripsMq.matches) {
+              strip.removeAttribute('tabindex');
+              strip.removeAttribute('role');
+              strip.removeAttribute('aria-expanded');
+              strip.classList.remove('is-expanded');
+            } else {
+              strip.setAttribute('tabindex', '0');
+              strip.setAttribute('role', 'button');
+              strip.setAttribute('aria-expanded', strip.classList.contains('is-expanded') ? 'true' : 'false');
+            }
+          });
+        }
+        applyStripMode();
+        stripsMq.addEventListener('change', applyStripMode);
         document.querySelectorAll('.request-strip').forEach(function (strip) {
           function toggle() {
+            if (stripsMq.matches) return;
             var expanded = strip.classList.toggle('is-expanded');
             strip.setAttribute('aria-expanded', expanded ? 'true' : 'false');
           }
           strip.addEventListener('click', toggle);
           strip.addEventListener('keydown', function (e) {
+            if (stripsMq.matches) return;
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
           });
         });
