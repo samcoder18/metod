@@ -26,9 +26,6 @@
     padding-top: 0;
     margin-top: 0;
   }
-  .about-acc:not([open]) .about-acc-body {
-    display: block;
-  }
 }
 
 @media (max-width: 1023.98px) {
@@ -37,10 +34,15 @@
   html.anim [data-reveal]:not([data-m-reveal]),
   html.anim .js-words .w,
   html.anim .reveal-line > span,
-  html.anim .photo-frame,
+  html.anim .photo-frame:not([data-m-reveal]),
   html.anim .hero-bg {
     opacity: 1 !important;
     transform: none !important;
+    clip-path: none !important;
+  }
+  /* Фото с data-m-reveal анимируется через m-reveal; clip-path глушим отдельно,
+     чтобы не было двойной анимации поверх fade-up */
+  html.anim .photo-frame[data-m-reveal] {
     clip-path: none !important;
   }
   html.anim .photo-parallax {
