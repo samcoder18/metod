@@ -115,6 +115,105 @@
   .m-hero-tel:active {
     color: #C9A24B;
   }
+
+  /* --- Бургер --- */
+  .m-menu-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  }
+  .m-menu-btn-line {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: #ECE7DE;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .m-menu-btn.is-active .m-menu-btn-line:first-child {
+    transform: translateY(4.25px) rotate(45deg);
+  }
+  .m-menu-btn.is-active .m-menu-btn-line:last-child {
+    transform: translateY(-4.25px) rotate(-45deg);
+  }
+
+  /* --- Оверлей меню --- */
+  .m-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: #100F0D;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: calc(72px + 2rem) 1.5rem calc(2rem + env(safe-area-inset-bottom));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .m-menu.is-open {
+    opacity: 1;
+  }
+  .m-menu[hidden] {
+    display: none;
+  }
+  .m-menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .m-menu-link {
+    font-family: "Tenor Sans", serif;
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.15;
+    color: #ECE7DE;
+    padding: 0.35rem 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.2s ease;
+    transition-delay: calc(var(--i, 0) * 60ms);
+  }
+  .m-menu.is-open .m-menu-link {
+    opacity: 1;
+    transform: none;
+  }
+  .m-menu-link:active {
+    color: #C9A24B;
+  }
+  .m-menu-foot {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .m-menu-contact {
+    color: #9C968C;
+    font-size: 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .m-menu-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    margin-top: 0.5rem;
+    background: #C9A24B;
+    color: #14120F;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.875rem;
+  }
+  .m-menu-cta:active {
+    background: #8F7331;
+  }
 }
 
 @media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {

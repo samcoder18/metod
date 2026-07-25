@@ -610,11 +610,34 @@
         <a href="blog/" class="nav-link hover:text-foreground transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Блог</a>
         <a href="#kontakty" class="nav-link hover:text-foreground transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Контакты</a>
       </nav>
-      <a href="#zapis" class="magnetic inline-flex items-center justify-center min-h-[44px] px-6 border border-foreground/25 text-[13px] uppercase tracking-[0.14em] hover:border-accent hover:text-accent transition-colors duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
+      <button type="button" id="menu-btn" class="lg:hidden m-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Открыть меню">
+        <span class="m-menu-btn-line" aria-hidden="true"></span>
+        <span class="m-menu-btn-line" aria-hidden="true"></span>
+      </button>
+      <a href="#zapis" class="magnetic hidden lg:inline-flex items-center justify-center min-h-[44px] px-6 border border-foreground/25 text-[13px] uppercase tracking-[0.14em] hover:border-accent hover:text-accent transition-colors duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
         Записаться
       </a>
     </div>
   </header>
+
+  <!-- ══════════ MOBILE MENU ══════════ -->
+  <div id="mobile-menu" class="m-menu" role="dialog" aria-modal="true" aria-label="Меню" hidden>
+    <nav class="m-menu-nav" aria-label="Мобильная навигация">
+      <a href="#metod" class="m-menu-link">Метод</a>
+      <a href="#sessiya" class="m-menu-link">Сессия</a>
+      <a href="#tekhniki" class="m-menu-link">Техники</a>
+      <a href="#obo-mne" class="m-menu-link">Обо мне</a>
+      <a href="#ceny" class="m-menu-link">Цены</a>
+      <a href="#voprosy" class="m-menu-link">Вопросы</a>
+      <a href="blog/" class="m-menu-link">Блог</a>
+      <a href="#kontakty" class="m-menu-link">Контакты</a>
+    </nav>
+    <div class="m-menu-foot">
+      <a href="tel:+79187056969" class="m-menu-contact">+7 918 705 69 69</a>
+      <a href="https://t.me/OlegTsutsiev" class="m-menu-contact" target="_blank" rel="noopener">Telegram @OlegTsutsiev</a>
+      <a href="#zapis" class="m-menu-cta">Записаться</a>
+    </div>
+  </div>
 
   <main id="main">
 
