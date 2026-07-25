@@ -50,6 +50,7 @@
   /* Фокус-ловушка: крестик (menuBtn) включён в цикл.
      Слушаем и menu, и menuBtn — кнопка вне оверлея, события на ней до menu не всплывают. */
   function menuTrap(e) {
+    if (!menuOpen) return;
     if (e.key !== 'Tab') return;
     const f = [menuBtn, ...menu.querySelectorAll('a')];
     const first = f[0];
