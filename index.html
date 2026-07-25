@@ -861,15 +861,16 @@
     <!-- ══════════ ТЕХНИКИ (список с hover-превью) ══════════ -->
     <section id="tekhniki" class="px-6 lg:px-12 py-24 lg:py-40 border-t border-border">
       <div class="max-w-[1400px] mx-auto">
-        <h2 class="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-tight mb-6" data-reveal>
+        <h2 class="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-tight mb-6" data-reveal data-m-reveal>
           Техники
         </h2>
-        <p class="text-secondary max-w-xl leading-relaxed mb-16 lg:mb-20" data-reveal>
+        <p class="text-secondary max-w-xl leading-relaxed mb-16 lg:mb-20" data-reveal data-m-reveal>
           Каждая сессия во Владикавказе собирается индивидуально: метод подбирается под состояние
           вашего тела в конкретный день.
         </p>
+        <p class="lg:hidden text-[13px] uppercase tracking-[0.14em] text-secondary/70 mb-6" data-m-reveal>Нажмите на технику, чтобы узнать подробнее</p>
 
-        <ul class="font-display text-[clamp(1.6rem,3.8vw,2.9rem)] leading-tight">
+        <ul class="font-display text-[clamp(1.6rem,3.8vw,2.9rem)] leading-tight" data-m-reveal="stagger">
           <li class="technique-item border-t border-border py-6 lg:py-8 flex items-baseline gap-6 cursor-default" tabindex="0" data-reveal>
             <span class="technique-dash inline-block h-px w-6 bg-foreground/30 self-center" aria-hidden="true"></span>Триггерная терапия
           </li>
