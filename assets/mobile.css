@@ -144,8 +144,8 @@
   .m-menu {
     position: fixed;
     inset: 0;
-    /* z-index 30: ниже шапки (40) — бургер остаётся кликабельным поверх меню */
-    z-index: 30;
+    /* z-index 35: ниже шапки (40), выше faq-nav-mobile (30) — бургер кликабелен, faq-бар не перекрывает меню */
+    z-index: 35;
     background: #100F0D;
     display: flex;
     flex-direction: column;
@@ -156,6 +156,9 @@
   }
   .m-menu.is-open {
     opacity: 1;
+  }
+  .m-menu:not(.is-open) {
+    pointer-events: none;
   }
   .m-menu[hidden] {
     display: none;

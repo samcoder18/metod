@@ -10,11 +10,17 @@
   const menu = document.getElementById('mobile-menu');
   let menuOpen = false;
 
+  /* Индексы stagger для ссылок меню — один раз при инициализации */
+  [...menu.querySelectorAll('.m-menu-link')].forEach((l, i) => l.style.setProperty('--i', i));
+
   function openMenu() {
     menuOpen = true;
+    /* Закрыть открытые bottom-sheet'ы их же механизмом — иначе конфликт overflow-lock'ов и z-index */
+    document.querySelectorAll('#tech-sheet.is-open, #format-sheet.is-open').forEach((sheet) => {
+      sheet.querySelector('.tech-sheet-close')?.click();
+    });
     menu.hidden = false;
-    [...menu.querySelectorAll('.m-menu-link')].forEach((l, i) => l.style.setProperty('--i', i));
-    requestAnimationFrame(() => menu.classList.add('is-open'));
+    requestAnimationFrame(() => requestAnimationFrame(() => menu.classList.add('is-open')));
     menuBtn.setAttribute('aria-expanded', 'true');
     menuBtn.setAttribute('aria-label', 'Закрыть меню');
     menuBtn.classList.add('is-active');
@@ -23,7 +29,7 @@
     menu.querySelector('.m-menu-link')?.focus();
   }
 
-  function closeMenu() {
+  function closeMenu({ restoreFocus = true } = {}) {
     menuOpen = false;
     menu.classList.remove('is-open');
     menuBtn.setAttribute('aria-expanded', 'false');
@@ -32,19 +38,20 @@
     document.body.style.overflow = '';
     updateStickyCta();
     setTimeout(() => { if (!menuOpen) menu.hidden = true; }, 350);
-    menuBtn.focus();
+    if (restoreFocus) menuBtn.focus();
   }
 
   menuBtn.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menuOpen) closeMenu();
   });
-  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => closeMenu({ restoreFocus: false })));
 
-  /* Фокус-ловушка */
-  menu.addEventListener('keydown', (e) => {
+  /* Фокус-ловушка: крестик (menuBtn) включён в цикл.
+     Слушаем и menu, и menuBtn — кнопка вне оверлея, события на ней до menu не всплывают. */
+  function menuTrap(e) {
     if (e.key !== 'Tab') return;
-    const f = [...menu.querySelectorAll('a')];
+    const f = [menuBtn, ...menu.querySelectorAll('a')];
     const first = f[0];
     const last = f[f.length - 1];
     if (e.shiftKey && document.activeElement === first) {
@@ -54,7 +61,9 @@
       first.focus();
       e.preventDefault();
     }
-  });
+  }
+  menu.addEventListener('keydown', menuTrap);
+  menuBtn.addEventListener('keydown', menuTrap);
 
   /* Ресайз за брейкпоинт с открытым меню — закрыть */
   mq.addEventListener('change', (e) => {
