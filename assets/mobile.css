@@ -218,6 +218,37 @@
   .m-menu-cta:active {
     background: #8F7331;
   }
+
+  /* --- Sticky CTA --- */
+  .m-sticky-cta {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    background: #C9A24B;
+    color: #14120F;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.875rem;
+    box-shadow: 0 8px 30px rgba(201, 162, 75, 0.28);
+    opacity: 0;
+    transform: translateY(140%);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .m-sticky-cta.is-visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .m-sticky-cta:active {
+    background: #8F7331;
+  }
 }
 
 @media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {

@@ -3,7 +3,7 @@
   const mq = window.matchMedia('(max-width: 1023.98px)');
   if (!mq.matches) return;
 
-  let updateStickyCta = () => {};
+  let updateStickyCta;
 
   /* --- Полноэкранное меню --- */
   const menuBtn = document.getElementById('menu-btn');
@@ -12,6 +12,33 @@
 
   /* Индексы stagger для ссылок меню — один раз при инициализации */
   [...menu.querySelectorAll('.m-menu-link')].forEach((l, i) => l.style.setProperty('--i', i));
+
+  /* --- Sticky CTA --- */
+  const stickyCta = document.getElementById('sticky-cta');
+  const heroMobile = document.getElementById('hero-mobile');
+  const zapisSection = document.getElementById('zapis');
+  let pastHero = false;
+  let zapisVisible = false;
+
+  updateStickyCta = () => {
+    stickyCta.classList.toggle(
+      'is-visible',
+      pastHero && !zapisVisible && !menuOpen && document.body.style.overflow !== 'hidden'
+    );
+  };
+
+  if (heroMobile) {
+    new IntersectionObserver(([e]) => {
+      pastHero = !e.isIntersecting;
+      updateStickyCta();
+    }, { threshold: 0 }).observe(heroMobile);
+  }
+  if (zapisSection) {
+    new IntersectionObserver(([e]) => {
+      zapisVisible = e.isIntersecting;
+      updateStickyCta();
+    }, { threshold: 0.15 }).observe(zapisSection);
+  }
 
   function openMenu() {
     menuOpen = true;
