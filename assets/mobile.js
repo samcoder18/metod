@@ -27,17 +27,19 @@
     );
   };
 
-  if (heroMobile) {
-    new IntersectionObserver(([e]) => {
-      pastHero = !e.isIntersecting;
-      updateStickyCta();
-    }, { threshold: 0 }).observe(heroMobile);
-  }
-  if (zapisSection) {
-    new IntersectionObserver(([e]) => {
-      zapisVisible = e.isIntersecting;
-      updateStickyCta();
-    }, { threshold: 0.15 }).observe(zapisSection);
+  if ('IntersectionObserver' in window) {
+    if (heroMobile) {
+      new IntersectionObserver(([e]) => {
+        pastHero = !e.isIntersecting;
+        updateStickyCta();
+      }, { threshold: 0 }).observe(heroMobile);
+    }
+    if (zapisSection) {
+      new IntersectionObserver(([e]) => {
+        zapisVisible = e.isIntersecting;
+        updateStickyCta();
+      }, { threshold: 0.15 }).observe(zapisSection);
+    }
   }
 
   function openMenu() {
