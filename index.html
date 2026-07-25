@@ -226,7 +226,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Onest:wght@400;500;600&family=Tenor+Sans&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/hero-poster.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero-poster.webp" fetchpriority="high" media="(min-width: 1024px)">
+  <link rel="preload" as="image" href="assets/m/hero-mobile.webp" media="(max-width: 1023px)">
 
   <link rel="stylesheet" href="assets/tailwind.min.css">
   <link rel="stylesheet" href="assets/mobile.css">
@@ -618,10 +619,10 @@
   <main id="main">
 
     <!-- ══════════ HERO ══════════ -->
-    <section class="relative min-h-[100dvh] flex flex-col justify-center px-6 lg:px-12 overflow-hidden">
+    <section class="relative min-h-[100dvh] hidden lg:flex flex-col justify-center px-6 lg:px-12 overflow-hidden">
       <div class="absolute inset-0" aria-hidden="true">
         <video class="hero-bg w-full h-full object-cover opacity-40" muted loop playsinline preload="metadata" poster="assets/hero-poster.webp">
-          <source src="assets/hero.mp4" type="video/mp4">
+          <source src="assets/hero.mp4" type="video/mp4" media="(min-width: 1024px)">
         </video>
         <div class="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background"></div>
         <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 55% at 30% 60%, rgba(201,162,75,0.10), transparent 65%);"></div>
@@ -652,6 +653,31 @@
 
       <div class="relative max-w-[1400px] mx-auto w-full mt-16 lg:mt-24 pb-12" data-reveal>
         <p class="font-serif italic text-xl lg:text-2xl text-secondary">«Сначала тело. За ним и всё остальное.»</p>
+      </div>
+    </section>
+
+    <!-- ══════════ HERO MOBILE ══════════ -->
+    <section id="hero-mobile" class="lg:hidden relative flex flex-col" aria-label="Метод Цуциева — массаж и работа с телом во Владикавказе">
+      <div class="m-hero-media" data-m-reveal="fade">
+        <picture>
+          <source srcset="assets/m/hero-mobile.webp" type="image/webp">
+          <source srcset="assets/m/hero-mobile.jpg">
+          <img src="assets/m/hero-mobile.jpg" alt="Мастер проводит сессию массажа" width="828" height="1035" fetchpriority="high">
+        </picture>
+        <div class="m-hero-scrim" aria-hidden="true"></div>
+      </div>
+
+      <div class="px-6 pt-8 pb-12">
+        <p class="text-[11px] uppercase tracking-[0.32em] text-accent mb-6" data-m-reveal>Индивидуальные сессии · Владикавказ</p>
+        <span class="m-hero-title font-display" aria-hidden="true" data-m-reveal>Метод<br>Цуциева<span class="text-accent">.</span></span>
+        <p class="text-lg text-secondary leading-relaxed mt-6 max-w-md" data-m-reveal>
+          Персональный массаж и работа с телом во Владикавказе: снимаю боль и напряжение
+          через биомеханику, возвращаю покой и энергию через глубокие телесные техники.
+        </p>
+        <div class="mt-8 flex flex-col items-start gap-4" data-m-reveal>
+          <a href="#zapis" class="m-hero-cta">Записаться</a>
+          <a href="tel:+79187056969" class="m-hero-tel">+7 918 705 69 69</a>
+        </div>
       </div>
     </section>
 
