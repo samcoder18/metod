@@ -388,6 +388,11 @@
   }
 
   /* --- Техники --- */
+  /* Десктопное тире скрыто: с новым шевроном — двойной индикатор,
+     а sticky-:hover на iOS удлиняет тире и сдвигает текст */
+  #tekhniki .technique-dash {
+    display: none !important;
+  }
   /* Дети stagger-списка имеют десктопный data-reveal — снимаем с них
      форс-видимость, чтобы сработал мобильный stagger */
   html.anim #tekhniki [data-m-reveal="stagger"] > .technique-item {
