@@ -272,7 +272,7 @@
     background: #171512;
     border-radius: 12px;
     overflow: hidden;
-    cursor: default;
+    cursor: default !important;
   }
   .request-strip:nth-child(odd) {
     margin-right: 1.5rem;
