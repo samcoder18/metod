@@ -108,6 +108,16 @@
     if (!e.matches && menuOpen) closeMenu();
   });
 
+  /* --- Аккордеон «Обо мне»: на мобильных открыт только первый --- */
+  const aboutAccs = document.querySelectorAll('.about-acc');
+  if (aboutAccs.length) {
+    aboutAccs.forEach((d, i) => { d.open = i === 0; });
+    /* При расширении окна за брейкпоинт — открыть все (десктопная parity) */
+    mq.addEventListener('change', (e) => {
+      if (!e.matches) aboutAccs.forEach((d) => { d.open = true; });
+    });
+  }
+
   /* --- Фолбэк без IntersectionObserver: сразу показываем всё --- */
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('[data-m-reveal]').forEach((el) => el.classList.add('m-is-in'));

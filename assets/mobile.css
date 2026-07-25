@@ -6,6 +6,31 @@
    карточки radius 12px, кнопки без скругления.
    ============================================================ */
 
+/* details-аккордеон «Обо мне»: маркер скрыт на всех ширинах */
+.about-acc summary {
+  list-style: none;
+}
+.about-acc summary::-webkit-details-marker {
+  display: none;
+}
+/* На десктопе аккордеон всегда раскрыт и без стрелок */
+@media (min-width: 1024px) {
+  .about-acc summary {
+    pointer-events: none;
+  }
+  .about-acc summary::after {
+    display: none;
+  }
+  .about-acc + .about-acc {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .about-acc:not([open]) .about-acc-body {
+    display: block;
+  }
+}
+
 @media (max-width: 1023.98px) {
 
   /* --- Форс-видимость десктопных анимационных начальных состояний --- */
@@ -424,6 +449,39 @@
   }
   #tekhniki .technique-item:active {
     background: rgba(201, 162, 75, 0.06);
+  }
+
+  /* --- Обо мне --- */
+  #obo-mne .photo-frame {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    aspect-ratio: 4 / 5 !important;
+  }
+  .about-acc summary {
+    cursor: pointer;
+    position: relative;
+    padding-right: 2.5rem;
+    min-height: 44px;
+  }
+  .about-acc summary::after {
+    content: "";
+    position: absolute;
+    right: 0.25rem;
+    top: 0.55rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 1.5px solid #C9A24B;
+    border-bottom: 1.5px solid #C9A24B;
+    transform: rotate(45deg);
+    transition: transform 0.25s ease;
+  }
+  .about-acc[open] summary::after {
+    transform: rotate(225deg);
+  }
+  .about-acc + .about-acc {
+    border-top: 1px solid #27231E;
+    padding-top: 1.25rem;
+    margin-top: 1.25rem;
   }
 }
 
