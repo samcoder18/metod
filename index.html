@@ -2074,7 +2074,10 @@
             clipPath: 'inset(0% 0% 0% 0%)', ease: 'none',
             scrollTrigger: {
               trigger: scene, start: 'top 62%',
-              end: i < scenes.length - 1 ? 'bottom top' : 'top 5%',
+              /* У последней сцены нет sticky-досуга (.scenes кончается на ней):
+                 'top 5%' завершал заливку, пока заголовок ещё за экраном.
+                 'bottom 78%' — заливка доигрывает на виду, пока сцена уходит вверх */
+              end: i < scenes.length - 1 ? 'bottom top' : 'bottom 78%',
               scrub: true
             }
           });
