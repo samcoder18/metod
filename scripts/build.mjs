@@ -87,4 +87,10 @@ if (existsSync(join(root, 'assets'))) {
   console.log('✓ assets/ скопированы');
 }
 
+/* favicon.ico должен лежать в корне сайта: его ищут браузеры и поисковые роботы */
+if (existsSync(join(root, 'favicon.ico'))) {
+  cpSync(join(root, 'favicon.ico'), join(dist, 'favicon.ico'));
+  console.log('✓ favicon.ico скопирован');
+}
+
 console.log(`\nГотово: dist/ (SITE_URL=${siteUrl || '<пусто, dev-режим>'})`);
