@@ -17,13 +17,15 @@
   const stickyCta = document.getElementById('sticky-cta');
   const heroMobile = document.getElementById('hero-mobile');
   const zapisSection = document.getElementById('zapis');
+  const siteFooter = document.querySelector('footer');
   let pastHero = false;
   let zapisVisible = false;
+  let footerVisible = false;
 
   updateStickyCta = () => {
     stickyCta.classList.toggle(
       'is-visible',
-      pastHero && !zapisVisible && !menuOpen && document.body.style.overflow !== 'hidden'
+      pastHero && !zapisVisible && !footerVisible && !menuOpen && document.body.style.overflow !== 'hidden'
     );
   };
 
@@ -39,6 +41,12 @@
         zapisVisible = e.isIntersecting;
         updateStickyCta();
       }, { threshold: 0.15 }).observe(zapisSection);
+    }
+    if (siteFooter) {
+      new IntersectionObserver(([e]) => {
+        footerVisible = e.isIntersecting;
+        updateStickyCta();
+      }, { threshold: 0 }).observe(siteFooter);
     }
   }
 
