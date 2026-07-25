@@ -52,7 +52,7 @@ if (siteUrl && !/^https?:\/\//.test(siteUrl)) {
 /* Файлы, в которых подставляем __SITE_URL__: корневые + все страницы блога */
 import { readdirSync } from 'node:fs';
 
-const templated = ['index.html', 'robots.txt', 'sitemap.xml', '404.html'];
+const templated = ['index.html', 'privacy.html', 'robots.txt', 'sitemap.xml', '404.html'];
 
 function collectHtml(dir, relBase) {
   if (!existsSync(dir)) return;
