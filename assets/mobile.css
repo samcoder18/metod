@@ -9,7 +9,7 @@
 @media (max-width: 1023.98px) {
 
   /* --- Форс-видимость десктопных анимационных начальных состояний --- */
-  html.anim [data-reveal],
+  html.anim [data-reveal]:not([data-m-reveal]),
   html.anim .js-words .w,
   html.anim .reveal-line > span,
   html.anim .photo-frame,
