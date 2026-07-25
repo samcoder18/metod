@@ -293,6 +293,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: none !important;
+    transform: none !important;
   }
   .request-strip .strip-scrim,
   .request-strip .strip-label,
@@ -317,6 +319,7 @@
     color: #9C968C;
     font-size: 0.9375rem;
     line-height: 1.55;
+    max-width: none !important;
   }
 }
 
