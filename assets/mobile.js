@@ -77,4 +77,9 @@
       e.preventDefault();
     }
   });
+
+  /* Ресайз за брейкпоинт с открытым меню — закрыть */
+  mq.addEventListener('change', (e) => {
+    if (!e.matches && menuOpen) closeMenu();
+  });
 })();
