@@ -249,6 +249,12 @@
   .m-sticky-cta:active {
     background: #8F7331;
   }
+
+  /* --- Манифест --- */
+  #metod .js-words {
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem) !important;
+    line-height: 1.35 !important;
+  }
 }
 
 @media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {
