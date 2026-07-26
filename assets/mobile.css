@@ -533,4 +533,7 @@
   .m-sticky-cta {
     transition: none !important;
   }
+  .quote.is-active {
+    animation: none;
+  }
 }
