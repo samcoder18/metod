@@ -122,12 +122,16 @@
   const quoteStage = document.querySelector('.quote-stage');
   if (quoteStage) {
     let swipeX = null;
-    quoteStage.addEventListener('pointerdown', (e) => { swipeX = e.clientX; }, { passive: true });
+    let swipeY = null;
+    quoteStage.addEventListener('pointerdown', (e) => { swipeX = e.clientX; swipeY = e.clientY; }, { passive: true });
+    quoteStage.addEventListener('pointercancel', () => { swipeX = null; swipeY = null; }, { passive: true });
     quoteStage.addEventListener('pointerup', (e) => {
       if (swipeX === null) return;
       const dx = e.clientX - swipeX;
+      const dy = e.clientY - swipeY;
       swipeX = null;
-      if (Math.abs(dx) < 40) return;
+      swipeY = null;
+      if (Math.abs(dx) < 40 || Math.abs(dx) <= Math.abs(dy)) return;
       const btn = document.querySelector(dx > 0 ? '.quote-prev' : '.quote-next');
       btn?.click();
     }, { passive: true });

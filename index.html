@@ -1546,6 +1546,10 @@
         var section = stage.closest('section');
         var dotsWrap = section.querySelector('.quote-dots');
         var index = 0, timer = null;
+        /* На мобильных autoplay выключен: каждый тик — смена DOM в aria-live="polite"
+           (SR зачитывает цитату каждые 6.5с) + CLS-прыжки от цитат разной длины.
+           Навигация ручная: точки, стрелки, свайп. Десктопный autoplay не меняется. */
+        var isMobile = window.matchMedia('(max-width: 1023.98px)').matches;
 
         var dots = quotes.map(function (_, n) {
           var b = document.createElement('button');
@@ -1568,7 +1572,7 @@
         function stop() { clearInterval(timer); timer = null; }
         function restart() {
           stop();
-          if (reduceMotion) return;
+          if (reduceMotion || isMobile) return;
           timer = setInterval(function () { show(index + 1); }, 6500);
         }
         section.querySelector('.quote-prev').addEventListener('click', function () { show(index - 1); restart(); });
