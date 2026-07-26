@@ -620,6 +620,17 @@
     height: auto !important;
     min-height: 0 !important;
   }
+
+  /* --- Отзывы: стрелки скрыты (навигация — точки и свайп) --- */
+  .quote-btn {
+    display: none !important;
+  }
+
+  /* --- Страховка от горизонтального скролла --- */
+  html,
+  body {
+    overflow-x: clip;
+  }
 }
 
 @media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {
