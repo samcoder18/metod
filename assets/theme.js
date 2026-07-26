@@ -22,6 +22,8 @@
     if (save) {
       try { localStorage.setItem(KEY, theme); } catch (e) { /* приватный режим */ }
     }
+    /* canvas-сцены и др. подписчики перечитывают токены */
+    document.dispatchEvent(new CustomEvent('themechange'));
   }
 
   if (btn) {

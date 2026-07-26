@@ -22,6 +22,7 @@
   <meta name="twitter:description" content="Комплексная работа с телом во Владикавказе: триггерная терапия, глубокотканный массаж, Lomi-Lomi и палсинг. Снимаю боль и напряжение, возвращаю покой и энергию.">
   <meta name="twitter:image" content="__SITE_URL__/assets/session-1.jpg">
   <meta name="theme-color" content="#100F0D">
+  <script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}</script>
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -231,18 +232,22 @@
 
   <link rel="stylesheet" href="assets/tailwind.min.css">
   <link rel="stylesheet" href="assets/mobile.css">
+  <link rel="stylesheet" href="assets/theme.css">
 
   <style>
     :root {
-      --color-background: #100F0D;
-      --color-foreground: #ECE7DE;
-      --color-accent: #C9A24B;
-      --color-border: #27231E;
+      --color-background: rgb(var(--c-background));
+      --color-foreground: rgb(var(--c-foreground));
+      --color-accent: rgb(var(--c-accent));
+      --color-border: rgb(var(--c-border));
+      --color-secondary: rgb(var(--c-secondary));
+      --color-on-accent: rgb(var(--c-on-accent));
+      --color-muted: rgb(var(--c-muted));
     }
 
     html { -webkit-font-smoothing: antialiased; }
-    body { text-rendering: optimizeLegibility; background: #100F0D; }
-    ::selection { background: rgba(201, 162, 75, 0.28); color: #ECE7DE; }
+    body { text-rendering: optimizeLegibility; background: var(--color-background); }
+    ::selection { background: rgb(var(--c-accent) / 0.28); color: var(--color-foreground); }
 
     /* ── Плёночное зерно поверх всей страницы ── */
     .grain {
@@ -270,7 +275,7 @@
 
     /* ── Header ── */
     #site-header { transition: background-color 400ms, border-color 400ms, backdrop-filter 400ms; border-bottom: 1px solid transparent; }
-    #site-header.is-scrolled { background-color: rgba(16, 15, 13, 0.72); backdrop-filter: blur(14px); border-bottom-color: var(--color-border); }
+    #site-header.is-scrolled { background-color: rgb(var(--c-background) / 0.72); backdrop-filter: blur(14px); border-bottom-color: var(--color-border); }
     #site-header .nav-link { position: relative; }
     #site-header .nav-link::after {
       content: ""; position: absolute; left: 0; bottom: -4px; height: 1px; width: 100%;
@@ -289,19 +294,19 @@
       filter: brightness(0.5) saturate(0.85); transform: scale(1.06);
       transition: filter 800ms, transform 1200ms cubic-bezier(0.22, 1, 0.36, 1); }
     .request-strip:hover img, .request-strip:focus-visible img { filter: brightness(0.72) saturate(1); transform: scale(1); }
-    .strip-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(16,15,13,0.85), rgba(16,15,13,0.05) 55%); }
+    .strip-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgb(var(--c-background) / 0.85), rgb(var(--c-background) / 0.05) 55%); }
     .strip-label { position: absolute; left: 1.25rem; bottom: 1.5rem; writing-mode: vertical-rl; transform: rotate(180deg);
-      font-family: "Tenor Sans", Georgia, serif; font-size: 1.15rem; letter-spacing: 0.06em; color: #ECE7DE;
+      font-family: "Tenor Sans", Georgia, serif; font-size: 1.15rem; letter-spacing: 0.06em; color: var(--color-foreground);
       white-space: nowrap; transition: opacity 400ms; }
     .request-strip:hover .strip-label, .request-strip:focus-visible .strip-label { opacity: 0; }
     .strip-body { position: absolute; left: 1.75rem; right: 1.75rem; bottom: 1.75rem;
       opacity: 0; transform: translateY(14px);
       transition: opacity 500ms 180ms, transform 500ms 180ms cubic-bezier(0.22, 1, 0.36, 1); }
     .request-strip:hover .strip-body, .request-strip:focus-visible .strip-body { opacity: 1; transform: none; }
-    .strip-body h3 { font-family: "Tenor Sans", Georgia, serif; font-size: clamp(1.6rem, 2.4vw, 2.2rem); line-height: 1.12; color: #ECE7DE; margin-bottom: 0.8rem; }
+    .strip-body h3 { font-family: "Tenor Sans", Georgia, serif; font-size: clamp(1.6rem, 2.4vw, 2.2rem); line-height: 1.12; color: var(--color-foreground); margin-bottom: 0.8rem; }
     .strip-desc { font-size: clamp(1.05rem, 1.3vw, 1.2rem); line-height: 1.5; color: rgba(236,231,222,0.8); max-width: 32ch; }
-    .strip-dash { display: block; width: 2.5rem; height: 1px; background: #C9A24B; margin-bottom: 1rem; }
-    .request-strip:focus-visible { outline: 2px solid #C9A24B; outline-offset: -2px; }
+    .strip-dash { display: block; width: 2.5rem; height: 1px; background: var(--color-accent); margin-bottom: 1rem; }
+    .request-strip:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
 
     /* Закреплённое раскрытие полосы по клику/Enter (тач и клавиатура) */
     .request-strip.is-expanded { flex-grow: 3.4; }
@@ -318,15 +323,15 @@
 
     /* ── Список техник + hover-превью ── */
     .technique-item { transition: padding-left 400ms cubic-bezier(0.22, 1, 0.36, 1), color 400ms; }
-    .technique-item:hover, .technique-item:focus-visible { padding-left: 1.5rem; color: #ECE7DE; }
+    .technique-item:hover, .technique-item:focus-visible { padding-left: 1.5rem; color: var(--color-foreground); }
     .technique-item .technique-dash { transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1), background-color 400ms; }
-    .technique-item:hover .technique-dash, .technique-item:focus-visible .technique-dash { width: 3rem; background-color: #C9A24B; }
+    .technique-item:hover .technique-dash, .technique-item:focus-visible .technique-dash { width: 3rem; background-color: var(--color-accent); }
 
     /* ── Форматы и цены ── */
     .format-row { transition: padding-left 400ms cubic-bezier(0.22, 1, 0.36, 1); }
     .format-row:hover { padding-left: 1.5rem; }
     .format-row .format-price { transition: color 400ms; }
-    .format-row:hover .format-price { color: #C9A24B; }
+    .format-row:hover .format-price { color: var(--color-accent); }
     @media (hover: none) { .format-row:hover { padding-left: 0; } }
 
     #tech-preview, #format-preview {
@@ -335,7 +340,7 @@
       width: clamp(34rem, 48vw, 46rem); height: var(--tech-h);
       pointer-events: none; overflow: hidden; opacity: 0; transform: scale(0.96);
       transition: opacity 350ms, transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
-      background: #100F0D; border: 1px solid var(--color-border);
+      background: var(--color-background); border: 1px solid var(--color-border);
     }
     #tech-preview.is-visible, #format-preview.is-visible { opacity: 1; transform: scale(1); }
     @media (max-width: 1023px) {
@@ -343,7 +348,7 @@
     }
     .tech-backdrop {
       position: fixed; inset: 0; z-index: 25; pointer-events: none;
-      background: rgba(16, 15, 13, 0.55);
+      background: rgb(var(--c-background) / 0.55);
       backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
       opacity: 0; visibility: hidden;
       transition: opacity 500ms, visibility 0s 500ms;
@@ -360,7 +365,7 @@
     }
     .tech-preview-lead {
       flex: none; font-family: "Cormorant Garamond", Georgia, serif; font-style: italic;
-      font-size: 1.65rem; line-height: 1.28; color: #ECE7DE; margin-bottom: 1.25rem;
+      font-size: 1.65rem; line-height: 1.28; color: var(--color-foreground); margin-bottom: 1.25rem;
     }
     .tech-preview-body p { font-size: 1rem; line-height: 1.6; color: rgba(236, 231, 222, 0.78); margin-bottom: 0.75em; }
     .tech-preview-body p:last-child { margin-bottom: 0; }
@@ -375,7 +380,7 @@
     #tech-sheet, #format-sheet {
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
       max-height: 85dvh; display: flex; flex-direction: column;
-      background: #100F0D; border-top: 1px solid var(--color-border);
+      background: var(--color-background); border-top: 1px solid var(--color-border);
       transform: translateY(102%); visibility: hidden;
       transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s 550ms;
       padding-bottom: env(safe-area-inset-bottom);
@@ -389,7 +394,7 @@
     .tech-sheet-close {
       position: absolute; top: 0.25rem; right: 0.5rem; width: 44px; height: 44px;
       display: flex; align-items: center; justify-content: center;
-      font: inherit; font-size: 1.5rem; line-height: 1; color: #9C968C;
+      font: inherit; font-size: 1.5rem; line-height: 1; color: var(--color-secondary);
       background: none; border: 0; cursor: pointer;
     }
     .tech-sheet-close:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
@@ -404,10 +409,10 @@
       width: 44px; height: 44px; flex: none;
       display: flex; align-items: center; justify-content: center;
       background: none; border: 1px solid var(--color-border);
-      color: #9C968C; cursor: pointer;
+      color: var(--color-secondary); cursor: pointer;
       transition: color 300ms, border-color 300ms;
     }
-    .quote-btn:hover { color: #ECE7DE; border-color: var(--color-accent); }
+    .quote-btn:hover { color: var(--color-foreground); border-color: var(--color-accent); }
     .quote-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
     .quote-btn svg { width: 16px; height: 16px; }
     .quote-dot {
@@ -417,7 +422,7 @@
     .quote-dot::after {
       content: ""; position: absolute; left: 50%; top: 50%;
       width: 4px; height: 4px; margin: -2px 0 0 -2px;
-      background: #3A352E;
+      background: var(--color-muted);
       transition: background-color 300ms, transform 300ms;
     }
     .quote-dot.is-active::after { background: var(--color-accent); transform: scale(1.7); }
@@ -429,7 +434,7 @@
     /* ── Крупная цифра шага: контурное золото ── */
     .step-number {
       font-family: "Tenor Sans", Georgia, serif;
-      -webkit-text-stroke: 1px rgba(201, 162, 75, 0.75);
+      -webkit-text-stroke: 1px rgb(var(--c-accent) / 0.75);
       color: transparent;
       line-height: 0.9;
     }
@@ -440,9 +445,9 @@
     .scenes-bg { position: sticky; top: 0; height: 100dvh; overflow: hidden; will-change: transform; }
     .scenes-bg canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
     .scenes-bg::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background: radial-gradient(120% 90% at 50% 46%, transparent 52%, rgba(16, 15, 13, 0.5) 100%); }
+      background: radial-gradient(120% 90% at 50% 46%, transparent 52%, rgb(var(--c-background) / 0.5) 100%); }
     .scenes-bg::after { content: ""; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(16,15,13,0.94), rgba(16,15,13,0.28) 46%, rgba(16,15,13,0.55)); }
+      background: linear-gradient(to top, rgb(var(--c-background) / 0.94), rgb(var(--c-background) / 0.28) 46%, rgb(var(--c-background) / 0.55)); }
     .scene { position: relative; z-index: 1; min-height: 72svh; overflow: hidden;
       display: flex; align-items: flex-end; }
     @media (min-width: 1024px) {
@@ -467,7 +472,7 @@
     .scene-progress { display: none; }
     @media (min-width: 1024px) {
       .scene-progress { display: block; position: sticky; top: 41vh; z-index: 20;
-        width: 1px; height: 18vh; margin-left: auto; margin-right: 3rem; background: #3A352E; }
+        width: 1px; height: 18vh; margin-left: auto; margin-right: 3rem; background: var(--color-muted); }
       .scene-progress-fill { position: absolute; inset: 0; background: var(--color-accent);
         transform: scaleY(0); transform-origin: top; }
     }
@@ -486,7 +491,7 @@
       position: fixed; top: 0; left: 0; z-index: 80;
       display: flex; align-items: center; gap: 7px;
       padding: 10px 16px; border-radius: 9999px;
-      background: #C9A24B; color: #14120F;
+      background: var(--color-accent); color: var(--color-on-accent);
       font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
       pointer-events: none; opacity: 0;
       transition: opacity 250ms ease;
@@ -495,7 +500,7 @@
     .zapis-cursor-capsule svg { width: 14px; height: 14px; }
     .zapis-cursor-capsule.is-visible { opacity: 1; }
     #zapis > a:hover ~ .zapis-cursor-capsule {
-      background: #14120F; color: #C9A24B;
+      background: var(--color-on-accent); color: var(--color-accent);
       transition: opacity 250ms ease, background-color 500ms ease, color 500ms ease;
     }
 
@@ -505,7 +510,7 @@
     .faq-nav-mobile { position: sticky; top: 71px; z-index: 30;
       display: flex; gap: 1.75rem; overflow-x: auto; scrollbar-width: none;
       margin: 2.5rem -1.5rem 0; padding: 0.9rem 1.5rem;
-      background: rgba(16, 15, 13, 0.86); backdrop-filter: blur(12px);
+      background: rgb(var(--c-background) / 0.86); backdrop-filter: blur(12px);
       border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
     .faq-nav-mobile::-webkit-scrollbar { display: none; }
     .faq-nav-desktop { display: none; }
@@ -614,6 +619,10 @@
         <span class="m-menu-btn-line" aria-hidden="true"></span>
         <span class="m-menu-btn-line" aria-hidden="true"></span>
       </button>
+      <button type="button" id="theme-toggle" class="hidden lg:inline-flex items-center justify-center w-11 h-11 border border-foreground/25 hover:border-accent hover:text-accent transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none" aria-pressed="false" aria-label="Переключить тему">
+        <svg class="theme-icon-sun w-[18px] h-[18px]" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34L48,36.69A8,8,0,0,0,36.69,48ZM48,136H24a8,8,0,0,0,0,16H48a8,8,0,0,0,0-16Zm21.66,85.66-24-24a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-11.32-11.32l-24,24A8,8,0,0,0,192,72Zm5.66,138.34a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32-11.32l-24-24ZM232,136H208a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg>
+        <svg class="theme-icon-moon w-[18px] h-[18px]" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></svg>
+      </button>
       <a href="#zapis" class="magnetic hidden lg:inline-flex items-center justify-center min-h-[44px] px-6 border border-foreground/25 text-[13px] uppercase tracking-[0.14em] hover:border-accent hover:text-accent transition-colors duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
         Записаться
       </a>
@@ -648,7 +657,7 @@
           <source src="assets/hero.mp4" type="video/mp4" media="(min-width: 1024px)">
         </video>
         <div class="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background"></div>
-        <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 55% at 30% 60%, rgba(201,162,75,0.10), transparent 65%);"></div>
+        <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 55% at 30% 60%, rgb(var(--c-accent) / 0.10), transparent 65%);"></div>
       </div>
 
       <div class="hero-content relative max-w-[1400px] mx-auto w-full pt-24">
@@ -1623,6 +1632,18 @@
         if (!contoursC || !strokesC) return;
         var cctx = contoursC.getContext('2d');
         var sctx = strokesC.getContext('2d');
+
+        /* Цвета сцен берутся из CSS-токенов темы, обновляются при её переключении */
+        var GOLD = '201, 162, 75', INK = '236, 231, 222';
+        function refreshSceneColors() {
+          var cs = getComputedStyle(document.documentElement);
+          var g = cs.getPropertyValue('--c-accent').trim();
+          var i = cs.getPropertyValue('--c-foreground').trim();
+          if (g) GOLD = g.split(/\s+/).join(', ');
+          if (i) INK = i.split(/\s+/).join(', ');
+        }
+        refreshSceneColors();
+        document.addEventListener('themechange', refreshSceneColors);
         var DPR = Math.min(window.devicePixelRatio || 1, 1.5);
         var W = 0, H = 0, CELL = 14, COLS = 0, ROWS = 0;
         var fv = new Float32Array(0);
@@ -1695,8 +1716,8 @@
             var th = -0.55 + 1.1 * L / (nL + 1);
             var major = (L % 3 === 0);
             cctx.strokeStyle = major
-              ? 'rgba(201, 162, 75, ' + state.majorA + ')'
-              : 'rgba(236, 231, 222, ' + state.minorA + ')';
+              ? 'rgba(' + GOLD + ', ' + state.majorA + ')'
+              : 'rgba(' + INK + ', ' + state.minorA + ')';
             cctx.lineWidth = major ? 1 : 0.75;
             cctx.beginPath();
             for (j = 0; j < ROWS; j++) {
@@ -1736,9 +1757,9 @@
           if (sweep > 0.003) {
             var cy = (1 - sweep) * (H * 1.4) - H * 0.2;
             var g = cctx.createLinearGradient(0, cy - H * 0.18, 0, cy + H * 0.18);
-            g.addColorStop(0, 'rgba(201, 162, 75, 0)');
-            g.addColorStop(0.5, 'rgba(201, 162, 75, ' + (sweep * 0.09) + ')');
-            g.addColorStop(1, 'rgba(201, 162, 75, 0)');
+            g.addColorStop(0, 'rgba(' + GOLD + ', 0)');
+            g.addColorStop(0.5, 'rgba(' + GOLD + ', ' + (sweep * 0.09) + ')');
+            g.addColorStop(1, 'rgba(' + GOLD + ', 0)');
             cctx.fillStyle = g;
             cctx.fillRect(0, cy - H * 0.18, W, H * 0.36);
           }
@@ -1770,7 +1791,7 @@
             pt.life--;
             if (pt.life <= 0 || pt.x < -4 || pt.x > W + 4 || pt.y < -4 || pt.y > H + 4) { spawn(k); continue; }
             var gold = (k % 6 === 0);
-            sctx.strokeStyle = gold ? 'rgba(201, 162, 75, 0.34)' : 'rgba(236, 231, 222, 0.13)';
+            sctx.strokeStyle = gold ? 'rgba(' + GOLD + ', 0.34)' : 'rgba(' + INK + ', 0.13)';
             sctx.lineWidth = gold ? 0.9 : 0.7;
             sctx.beginPath();
             sctx.moveTo(pt.px, pt.py);
@@ -2381,6 +2402,7 @@
     })();
   </script>
   <script src="/assets/cookie-consent.js" defer></script>
+  <script src="assets/theme.js" defer></script>
   <script src="assets/mobile.js" defer></script>
 </body>
 </html>
