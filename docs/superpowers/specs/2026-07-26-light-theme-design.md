@@ -49,7 +49,7 @@ CSS-переменные как единый источник правды (ва
 | `--c-surface` | `#171512` | `#FCFAF5` |
 | `--c-raised` | `#1D1A16` | `#EDE8DD` |
 | `--c-foreground` | `#ECE7DE` | `#1B1813` |
-| `--c-secondary` | `#9C968C` | `#6E675C` |
+| `--c-secondary` | `#9C968C` | `#5C554A` |
 | `--c-accent` | `#C9A24B` | `#8F7331` |
 | `--c-accent-deep` | `#8F7331` | `#6E5926` |
 | `--c-border` | `#27231E` | `#E2DCCF` |
