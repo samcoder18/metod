@@ -1,0 +1,62 @@
+/* ============================================================
+   theme.css — дизайн-токены тем оформления.
+   Спека: docs/superpowers/specs/2026-07-26-light-theme-design.md
+   Подключается ПОСЛЕ tailwind.min.css / mobile.css / blog.css.
+   Тёмная тема — значения по умолчанию в :root.
+   Светлая — только на десктопе: @media (min-width: 1024px).
+   Формат "R G B" нужен для opacity-модификаторов Tailwind.
+   ============================================================ */
+
+:root {
+  --c-background: 16 15 13;    /* #100F0D */
+  --c-surface: 23 21 18;       /* #171512 */
+  --c-raised: 29 26 22;        /* #1D1A16 */
+  --c-foreground: 236 231 222; /* #ECE7DE */
+  --c-secondary: 156 150 140;  /* #9C968C */
+  --c-accent: 201 162 75;      /* #C9A24B */
+  --c-accent-deep: 143 115 49; /* #8F7331 */
+  --c-border: 39 35 30;        /* #27231E */
+  --c-on-accent: 20 18 15;     /* #14120F */
+  --c-muted: 58 53 46;         /* #3A352E (quote-btn, декоративные линии) */
+  --c-header-bg: rgba(16, 15, 13, 0.88);
+}
+
+@media (min-width: 1024px) {
+  [data-theme="light"] {
+    --c-background: 246 243 236; /* #F6F3EC */
+    --c-surface: 252 250 245;    /* #FCFAF5 */
+    --c-raised: 237 234 221;     /* #EDE8DD */
+    --c-foreground: 27 24 19;    /* #1B1813 */
+    --c-secondary: 110 103 92;   /* #6E675C */
+    --c-accent: 143 115 49;      /* #8F7331 — золото, затемнённое для контраста */
+    --c-accent-deep: 110 89 38;  /* #6E5926 */
+    --c-border: 226 220 207;     /* #E2DCCF */
+    --c-on-accent: 253 251 246;  /* #FDFBF6 */
+    --c-muted: 220 213 196;      /* #DCD5C4 */
+    --c-header-bg: rgba(246, 243, 236, 0.88);
+  }
+}
+
+/* Плавный переход между темами */
+body,
+#site-header,
+.request-strip,
+.quote-btn,
+#theme-toggle {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  #site-header,
+  .request-strip,
+  .quote-btn,
+  #theme-toggle {
+    transition: none;
+  }
+}
+
+/* Иконки переключателя: в тёмной теме — солнце, в светлой — луна */
+#theme-toggle .theme-icon-moon { display: none; }
+#theme-toggle.is-light .theme-icon-moon { display: block; }
+#theme-toggle.is-light .theme-icon-sun { display: none; }
