@@ -1532,6 +1532,7 @@
   <script>
     (function () {
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var isMobile = window.matchMedia('(max-width: 1023.98px)').matches;
 
       /* ── Header: фон при скролле (IntersectionObserver, без scroll-listener) ── */
       (function () {
@@ -1608,6 +1609,7 @@
       var sceneBgSet = null;
       var sceneBgPulse = null;
       (function () {
+        if (isMobile) return; // canvas-фон «Сессии» выключен на мобильных; статичный фон даёт mobile.css
         var contoursC = document.querySelector('.scenes-canvas-contours');
         var strokesC = document.querySelector('.scenes-canvas-strokes');
         if (!contoursC || !strokesC) return;
@@ -2070,7 +2072,11 @@
       })();
 
       /* ── Дальше только «дорогой» моушн: нужен GSAP и разрешённый motion ── */
-      if (reduceMotion || !window.gsap || !window.ScrollTrigger) return;
+      /* html.anim нужен и на мобильных: mobile.css по нему форс-показывает скрытые
+         начальные состояния. На десктопе без GSAP/при reduce-motion класс не добавляем —
+         иначе скрытые состояния из инлайн-CSS остались бы без анимации (как и раньше). */
+      if (isMobile) document.documentElement.classList.add('anim');
+      if (reduceMotion || isMobile || !window.gsap || !window.ScrollTrigger) return;
       document.documentElement.classList.add('anim');
       gsap.registerPlugin(ScrollTrigger);
 
