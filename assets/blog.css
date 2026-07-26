@@ -4,15 +4,16 @@
    ══════════════════════════════════════════════════════════════ */
 
 :root {
-  --color-background: #100F0D;
-  --color-surface: #171512;
-  --color-raised: #1D1A16;
-  --color-foreground: #ECE7DE;
-  --color-secondary: #9C968C;
-  --color-accent: #C9A24B;
-  --color-accent-deep: #8F7331;
-  --color-border: #27231E;
-  --color-on-accent: #14120F;
+  /* Значения берутся из токенов темы (assets/theme.css) */
+  --color-background: rgb(var(--c-background));
+  --color-surface: rgb(var(--c-surface));
+  --color-raised: rgb(var(--c-raised));
+  --color-foreground: rgb(var(--c-foreground));
+  --color-secondary: rgb(var(--c-secondary));
+  --color-accent: rgb(var(--c-accent));
+  --color-accent-deep: rgb(var(--c-accent-deep));
+  --color-border: rgb(var(--c-border));
+  --color-on-accent: rgb(var(--c-on-accent));
 }
 
 /* ── Зерно (как на главной, лёгкий вариант) ─────────────────── */
@@ -32,7 +33,7 @@
 
 /* ── Шапка: фон при скролле ─────────────────────────────────── */
 #site-header { transition: background-color 0.4s ease, border-color 0.4s ease; border-bottom: 1px solid transparent; }
-#site-header.is-scrolled { background: rgba(16, 15, 13, 0.88); backdrop-filter: blur(12px); border-bottom-color: var(--color-border); }
+#site-header.is-scrolled { background: var(--c-header-bg); backdrop-filter: blur(12px); border-bottom-color: var(--color-border); }
 
 /* ── Прогресс чтения ────────────────────────────────────────── */
 .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 70; pointer-events: none; }
@@ -51,7 +52,7 @@
 .article-body {
   font-size: 1.125rem;
   line-height: 1.8;
-  color: rgba(236, 231, 222, 0.86);
+  color: rgb(var(--c-foreground) / 0.86);
   text-wrap: pretty;
 }
 .article-body > * + * { margin-top: 1.5em; }
@@ -82,7 +83,7 @@
 .article-body a {
   color: var(--color-accent);
   text-decoration: underline;
-  text-decoration-color: rgba(201, 162, 75, 0.35);
+  text-decoration-color: rgb(var(--c-accent) / 0.35);
   text-underline-offset: 3px;
   transition: text-decoration-color 0.3s ease;
 }
@@ -162,7 +163,7 @@
   font-size: 1.1875rem; line-height: 1.4; color: var(--color-foreground);
   margin: 0 0 0.75rem;
 }
-.faq-a { font-size: 1rem; line-height: 1.75; color: rgba(236, 231, 222, 0.75); }
+.faq-a { font-size: 1rem; line-height: 1.75; color: rgb(var(--c-foreground) / 0.75); }
 .faq-a p { margin: 0; }
 
 /* ── Дисклеймер ─────────────────────────────────────────────── */
@@ -209,7 +210,7 @@
 .post-card:focus-within .post-card-media img { transform: scale(1.05); filter: grayscale(0.1) contrast(1.05) brightness(0.95); }
 .post-card-media::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(16, 15, 13, 0.55), transparent 55%);
+  background: linear-gradient(to top, rgb(var(--c-background) / 0.55), transparent 55%);
   pointer-events: none;
 }
 .post-card-title {
