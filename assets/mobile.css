@@ -512,6 +512,71 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
+
+  /* --- Цены: карточки --- */
+  /* Дети stagger-списка имеют десктопный data-reveal — снимаем с них
+     форс-видимость, чтобы сработал мобильный stagger (паттерн «Техники») */
+  html.anim #ceny [data-m-reveal="stagger"] > .format-row {
+    opacity: 0 !important;
+    transform: translateY(24px) !important;
+  }
+  html.anim #ceny [data-m-reveal="stagger"].m-is-in > .format-row {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #ceny ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+  #ceny .format-row {
+    border: none !important;
+    background: #171512;
+    border-radius: 12px;
+    padding: 1.25rem !important;
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "title duration"
+      "desc desc"
+      "price more";
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    align-items: baseline;
+  }
+  #ceny .format-row h3 {
+    grid-area: title;
+    font-size: 1.25rem !important;
+  }
+  #ceny .format-row p {
+    grid-area: desc;
+    font-size: 0.9375rem;
+  }
+  #ceny .format-row > span:first-of-type {
+    grid-area: duration;
+    white-space: nowrap;
+  }
+  #ceny .format-price {
+    grid-area: price;
+    font-size: 1.75rem !important;
+  }
+  #ceny .format-row::after {
+    content: "Подробнее";
+    grid-area: more;
+    color: #C9A24B;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  #ceny .format-row:active {
+    background: #1D1A16;
+  }
+  /* Курс (последняя карточка) выделен акцентной рамкой — перебивает
+     десктопные Tailwind-классы border-t/border-b */
+  #ceny li.format-row:last-child {
+    border: 1px solid rgba(201, 162, 75, 0.4) !important;
+  }
 }
 
 @media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {
@@ -526,6 +591,12 @@
   }
   /* Перекрытие секционного правила #tekhniki (у него выше специфичность) */
   html.anim #tekhniki [data-m-reveal="stagger"] > .technique-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  /* Зеркало для #ceny — та же причина (секционное правило выше специфичностью) */
+  html.anim #ceny [data-m-reveal="stagger"] > .format-row {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
