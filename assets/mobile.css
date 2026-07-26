@@ -42,7 +42,7 @@
   }
   /* Фото с data-m-reveal анимируется через m-reveal; clip-path глушим отдельно,
      чтобы не было двойной анимации поверх fade-up */
-  html.anim .photo-frame[data-m-reveal] {
+  html.m-js .photo-frame[data-m-reveal] {
     clip-path: none !important;
   }
   html.anim .photo-parallax {
@@ -50,27 +50,27 @@
   }
 
   /* --- Reveal-система (замена GSAP на мобильных) --- */
-  html.anim [data-m-reveal]:not([data-m-reveal="stagger"]) {
+  html.m-js [data-m-reveal]:not([data-m-reveal="stagger"]) {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  html.anim [data-m-reveal="fade"]:not([data-m-reveal="stagger"]) {
+  html.m-js [data-m-reveal="fade"]:not([data-m-reveal="stagger"]) {
     transform: none;
   }
-  html.anim [data-m-reveal].m-is-in {
+  html.m-js [data-m-reveal].m-is-in {
     opacity: 1;
     transform: none;
   }
-  html.anim [data-m-reveal="stagger"] > * {
+  html.m-js [data-m-reveal="stagger"] > * {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: calc(var(--i, 0) * 70ms);
   }
-  html.anim [data-m-reveal="stagger"].m-is-in > * {
+  html.m-js [data-m-reveal="stagger"].m-is-in > * {
     opacity: 1;
     transform: none;
   }
@@ -422,11 +422,11 @@
   }
   /* Дети stagger-списка имеют десктопный data-reveal — снимаем с них
      форс-видимость, чтобы сработал мобильный stagger */
-  html.anim #tekhniki [data-m-reveal="stagger"] > .technique-item {
+  html.m-js #tekhniki [data-m-reveal="stagger"] > .technique-item {
     opacity: 0 !important;
     transform: translateY(24px) !important;
   }
-  html.anim #tekhniki [data-m-reveal="stagger"].m-is-in > .technique-item {
+  html.m-js #tekhniki [data-m-reveal="stagger"].m-is-in > .technique-item {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -516,11 +516,11 @@
   /* --- Цены: карточки --- */
   /* Дети stagger-списка имеют десктопный data-reveal — снимаем с них
      форс-видимость, чтобы сработал мобильный stagger (паттерн «Техники») */
-  html.anim #ceny [data-m-reveal="stagger"] > .format-row {
+  html.m-js #ceny [data-m-reveal="stagger"] > .format-row {
     opacity: 0 !important;
     transform: translateY(24px) !important;
   }
-  html.anim #ceny [data-m-reveal="stagger"].m-is-in > .format-row {
+  html.m-js #ceny [data-m-reveal="stagger"].m-is-in > .format-row {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -637,20 +637,25 @@
   html {
     scroll-behavior: auto;
   }
-  html.anim [data-m-reveal],
-  html.anim [data-m-reveal="stagger"] > * {
+  html.m-js [data-m-reveal],
+  html.m-js [data-m-reveal="stagger"] > * {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
   /* Перекрытие секционного правила #tekhniki (у него выше специфичность) */
-  html.anim #tekhniki [data-m-reveal="stagger"] > .technique-item {
+  html.m-js #tekhniki [data-m-reveal="stagger"] > .technique-item {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
   /* Зеркало для #ceny — та же причина (секционное правило выше специфичностью) */
-  html.anim #ceny [data-m-reveal="stagger"] > .format-row {
+  html.m-js #ceny [data-m-reveal="stagger"] > .format-row {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .m-menu-link {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

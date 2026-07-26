@@ -1,7 +1,20 @@
 /* mobile.js — мобильный слой (< 1024px). Подключается с defer. */
 (() => {
   const mq = window.matchMedia('(max-width: 1023.98px)');
+
+  /* --- Фокусируемость summary «Обо мне»: только на мобильных --- */
+  const aboutSummaries = document.querySelectorAll('.about-acc summary');
+  const syncSummaryTabIndex = () => {
+    aboutSummaries.forEach((s) => { s.tabIndex = mq.matches ? 0 : -1; });
+  };
+  syncSummaryTabIndex();
+  mq.addEventListener('change', syncSummaryTabIndex);
+
   if (!mq.matches) return;
+
+  /* m-js: маркер живого mobile.js — скрытые начальные состояния m-reveal
+     гейтятся этим классом, чтобы при незагрузке скрипта контент остался видимым */
+  document.documentElement.classList.add('m-js');
 
   let updateStickyCta;
 

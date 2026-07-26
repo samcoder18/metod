@@ -600,7 +600,7 @@
         <svg class="h-6 w-auto text-accent" viewBox="36 42 326 242" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M66,76 L138,168 L212,72 V222 H332 V72 M332,222 V254"/></svg>
         <span class="font-display text-lg tracking-wide">Метод&nbsp;Цуциева</span>
       </a>
-      <nav class="hidden md:flex items-center gap-10 text-[13px] uppercase tracking-[0.14em] text-secondary" aria-label="Основная навигация">
+      <nav class="hidden lg:flex items-center gap-10 text-[13px] uppercase tracking-[0.14em] text-secondary" aria-label="Основная навигация">
         <a href="#metod" class="nav-link hover:text-foreground transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Метод</a>
         <a href="#sessiya" class="nav-link hover:text-foreground transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Сессия</a>
         <a href="#tekhniki" class="nav-link hover:text-foreground transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">Техники</a>
@@ -2073,10 +2073,7 @@
       })();
 
       /* ── Дальше только «дорогой» моушн: нужен GSAP и разрешённый motion ── */
-      /* html.anim нужен и на мобильных: mobile.css по нему форс-показывает скрытые
-         начальные состояния. На десктопе без GSAP/при reduce-motion класс не добавляем —
-         иначе скрытые состояния из инлайн-CSS остались бы без анимации (как и раньше). */
-      if (isMobile) document.documentElement.classList.add('anim');
+      /* isMobile: GSAP/Lenis/ScrollTrigger на мобильных не инициализируются; html.anim на мобильных не добавляется — мобильные скрытые состояния гейтятся классом m-js из mobile.js */
       if (reduceMotion || isMobile || !window.gsap || !window.ScrollTrigger) return;
       document.documentElement.classList.add('anim');
       gsap.registerPlugin(ScrollTrigger);
