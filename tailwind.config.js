@@ -1,18 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html', './blog/**/*.html'],
+  content: ['./index.html', './privacy.html', './404.html', './blog/**/*.html'],
   theme: {
     extend: {
       colors: {
-        background: '#100F0D',
-        surface: '#171512',
-        raised: '#1D1A16',
-        foreground: '#ECE7DE',
-        secondary: '#9C968C',
-        accent: '#C9A24B',
-        'accent-deep': '#8F7331',
-        border: '#27231E',
-        'on-accent': '#14120F',
+        background: 'rgb(var(--c-background) / <alpha-value>)',
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        raised: 'rgb(var(--c-raised) / <alpha-value>)',
+        foreground: 'rgb(var(--c-foreground) / <alpha-value>)',
+        secondary: 'rgb(var(--c-secondary) / <alpha-value>)',
+        accent: 'rgb(var(--c-accent) / <alpha-value>)',
+        'accent-deep': 'rgb(var(--c-accent-deep) / <alpha-value>)',
+        border: 'rgb(var(--c-border) / <alpha-value>)',
+        'on-accent': 'rgb(var(--c-on-accent) / <alpha-value>)',
       },
       fontFamily: {
         display: ['"Tenor Sans"', 'Georgia', 'serif'],
