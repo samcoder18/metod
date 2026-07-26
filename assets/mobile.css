@@ -579,6 +579,44 @@
   #ceny li.format-row:last-child {
     border: 1px solid rgba(201, 162, 75, 0.4) !important;
   }
+
+  /* --- FAQ --- */
+  .faq-question {
+    font-size: 1.35rem !important;
+    min-height: 56px;
+  }
+  .faq-nav-mobile {
+    top: 72px !important;
+  }
+
+  /* --- Запись --- */
+  #zapis > a:active {
+    background: #C9A24B !important;
+    color: #14120F !important;
+  }
+  .m-zapis-alt {
+    color: #9C968C;
+    font-size: 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .m-zapis-alt:active {
+    color: #C9A24B;
+  }
+
+  /* --- Контакты --- */
+  #kontakty address a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .contacts-map-iframe {
+    aspect-ratio: 4 / 3;
+    height: auto !important;
+    min-height: 0 !important;
+  }
 }
 
 @media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {
