@@ -485,6 +485,33 @@
     padding-top: 1.25rem;
     margin-top: 1.25rem;
   }
+
+  /* --- Отзывы --- */
+  .quote-stage {
+    min-height: 0 !important;
+  }
+  .quote {
+    position: static !important;
+    inset: auto !important;
+    display: none !important; /* !important: инлайн-<style> идёт после mobile.css, его .quote { display: flex } иначе побеждает */
+    opacity: 1 !important;
+    transform: none !important;
+    touch-action: pan-y;
+  }
+  .quote.is-active {
+    display: block !important;
+    animation: m-quote-in 0.4s ease;
+  }
+  .quote blockquote {
+    font-size: clamp(1.4rem, 5.8vw, 1.9rem) !important;
+  }
+  .quote-dots {
+    display: flex !important;
+  }
+  @keyframes m-quote-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }
 
 @media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {

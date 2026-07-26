@@ -118,6 +118,21 @@
     });
   }
 
+  /* --- Свайп отзывов --- */
+  const quoteStage = document.querySelector('.quote-stage');
+  if (quoteStage) {
+    let swipeX = null;
+    quoteStage.addEventListener('pointerdown', (e) => { swipeX = e.clientX; }, { passive: true });
+    quoteStage.addEventListener('pointerup', (e) => {
+      if (swipeX === null) return;
+      const dx = e.clientX - swipeX;
+      swipeX = null;
+      if (Math.abs(dx) < 40) return;
+      const btn = document.querySelector(dx > 0 ? '.quote-prev' : '.quote-next');
+      btn?.click();
+    }, { passive: true });
+  }
+
   /* --- Фолбэк без IntersectionObserver: сразу показываем всё --- */
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('[data-m-reveal]').forEach((el) => el.classList.add('m-is-in'));
