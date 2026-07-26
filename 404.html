@@ -7,6 +7,7 @@
   <meta name="description" content="Такой страницы нет. Записаться на массаж и работу с телом во Владикавказе можно на главной странице.">
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#100F0D">
+  <script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}</script>
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -17,9 +18,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Onest:wght@400;500;600&family=Tenor+Sans&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/tailwind.min.css">
+  <link rel="stylesheet" href="assets/theme.css">
 
   <style>
-    body { background: #100F0D; -webkit-font-smoothing: antialiased; }
+    body { background: rgb(var(--c-background)); -webkit-font-smoothing: antialiased; }
     .page-main { flex: 1 1 0%; }
   </style>
 </head>
@@ -59,5 +61,6 @@
   </footer>
 
   <script src="/assets/cookie-consent.js" defer></script>
+  <script src="assets/theme.js" defer></script>
 </body>
 </html>
