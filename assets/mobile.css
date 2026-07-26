@@ -594,6 +594,25 @@
     background: #C9A24B !important;
     color: #14120F !important;
   }
+  .m-zapis-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 56px;
+    background: #C9A24B;
+    color: #14120F;
+    font-family: "Tenor Sans", Georgia, serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    box-shadow: 0 10px 36px rgba(201, 162, 75, 0.30);
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  }
+  .m-zapis-btn:active {
+    transform: translateY(1px);
+    background: #8F7331;
+    box-shadow: 0 4px 16px rgba(201, 162, 75, 0.22);
+  }
   .m-zapis-alt {
     color: #9C968C;
     font-size: 1rem;

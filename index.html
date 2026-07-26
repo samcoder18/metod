@@ -1457,7 +1457,7 @@
 
     <!-- ══════════ ЗАПИСЬ (финал) ══════════ -->
     <section id="zapis" class="border-t border-border">
-      <a href="https://t.me/OlegTsutsiev" target="_blank" rel="noopener" class="group block px-6 lg:px-12 py-32 lg:py-48 text-center hover:bg-accent transition-colors duration-500 cursor-pointer focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent focus-visible:outline-none" data-reveal>
+      <a href="https://t.me/OlegTsutsiev" target="_blank" rel="noopener" class="group hidden lg:block px-6 lg:px-12 py-32 lg:py-48 text-center hover:bg-accent transition-colors duration-500 cursor-pointer focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent focus-visible:outline-none" data-reveal>
         <span class="block text-secondary text-sm lg:text-base tracking-[0.18em] uppercase mb-10 lg:mb-12 group-hover:text-on-accent/70 transition-colors duration-500">
           Первая сессия: разговор, диагностика и план под ваш запрос
         </span>
@@ -1465,9 +1465,16 @@
           Записаться
         </span>
       </a>
-      <div class="lg:hidden px-6 pb-16 flex flex-col gap-1">
-        <a href="tel:+79187056969" class="m-zapis-alt">Позвонить: +7 918 705 69 69</a>
-        <a href="https://t.me/OlegTsutsiev" target="_blank" rel="noopener" class="m-zapis-alt">Написать в Telegram</a>
+      <!-- Запись: мобильная версия — кнопка вместо гигантской ссылки -->
+      <div class="lg:hidden px-6 py-20 flex flex-col items-center text-center">
+        <p class="font-serif italic text-xl text-secondary leading-relaxed mb-10 max-w-xs" data-m-reveal>
+          Первая сессия: разговор, диагностика и план под ваш запрос
+        </p>
+        <a href="https://t.me/OlegTsutsiev" target="_blank" rel="noopener" class="m-zapis-btn" data-m-reveal>Записаться</a>
+        <div class="mt-10 w-full flex flex-col gap-1">
+          <a href="tel:+79187056969" class="m-zapis-alt">Позвонить: +7 918 705 69 69</a>
+          <a href="https://t.me/OlegTsutsiev" target="_blank" rel="noopener" class="m-zapis-alt">Написать в Telegram</a>
+        </div>
       </div>
       <div class="zapis-cursor-capsule" aria-hidden="true">
         <span>В Telegram</span>
