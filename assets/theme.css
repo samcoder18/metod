@@ -63,6 +63,7 @@ body,
 /* ── Переключатель темы: pill-свитч с золотым ползунком ─────── */
 .theme-switch {
   position: relative;
+  flex: none;
   align-items: center;
   justify-content: space-between;
   width: 4.25rem;
