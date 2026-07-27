@@ -580,10 +580,51 @@
       .contacts-map-frame, .contacts-map-iframe { min-height: 420px; }
     }
 
+    /* ── Подарочный сертификат ── */
+    @media (min-width: 1024px) {
+      .gift-col { grid-column: span 6 / span 6; }
+    }
+    .gift-steps { display: flex; flex-direction: column; gap: 1.5rem; }
+    .gift-step { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .gift-step-num { flex-shrink: 0; width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgb(var(--c-accent) / 0.35); border-radius: 9999px;
+      font-family: "Tenor Sans", Georgia, serif; color: var(--color-accent); }
+
+    .gift-chips { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .gift-chip { min-height: 44px; padding: 0 1.5rem; border: 1px solid var(--color-border); border-radius: 9999px;
+      background: transparent; color: var(--color-secondary); font: inherit; cursor: pointer;
+      transition: border-color 300ms, color 300ms, background-color 300ms; }
+    .gift-chip:hover { border-color: var(--color-accent); color: var(--color-foreground); }
+    .gift-chip.is-active { border-color: var(--color-accent); background: var(--color-accent); color: var(--color-on-accent); }
+    .gift-chip:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+    .gift-card-wrap { perspective: 1200px; max-width: 34rem; margin-inline: auto; }
+    .gift-card { position: relative; aspect-ratio: 8 / 5; border-radius: 18px; overflow: hidden;
+      background: linear-gradient(135deg, rgb(var(--c-raised)) 0%, rgb(var(--c-surface)) 55%, rgb(var(--c-raised)) 100%);
+      border: 1px solid rgb(var(--c-accent) / 0.35);
+      box-shadow: 0 32px 64px -24px rgb(0 0 0 / 0.55);
+      transform: rotate(-3deg);
+      --mx: 30%; --my: 20%; }
+    .gift-card::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(420px circle at var(--mx) var(--my), rgb(var(--c-accent) / 0.14), transparent 65%); }
+    .gift-card::after { content: ""; position: absolute; inset: 10px; pointer-events: none;
+      border: 1px solid rgb(var(--c-accent) / 0.18); border-radius: 12px; }
+    .gift-card-inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: space-between;
+      padding: clamp(1.25rem, 3.5vw, 2.25rem); }
+    .gift-card-top { display: flex; align-items: center; gap: 0.75rem; }
+    .gift-card-mid { display: flex; flex-direction: column; gap: 0.35rem; }
+    .gift-card-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.22em; color: var(--color-secondary); }
+    .gift-card-amount { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; color: var(--color-foreground); }
+    .gift-card-format { font-size: 0.95rem; color: var(--color-secondary); }
+    .gift-card-bottom { display: flex; justify-content: space-between; gap: 1rem; font-size: 12px; letter-spacing: 0.06em; color: var(--color-secondary); }
+    @media (max-width: 480px) {
+      .gift-card-bottom { flex-direction: column; gap: 0.25rem; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .grain { animation: none; }
       .quote { transition: none; }
-      .format-row, .format-row .format-price, .technique-item, .technique-item .technique-dash, .request-strip, .request-strip img, .strip-label, .strip-body, #tech-sheet, #format-sheet, .tech-backdrop, html.faq-js .faq-answer, html.faq-js .faq-answer-inner, .faq-q-text, .faq-icon::before, .faq-icon::after, .faq-nav-link, .faq-nav-link::before, .faq-item::before { transition: none; }
+      .format-row, .format-row .format-price, .technique-item, .technique-item .technique-dash, .request-strip, .request-strip img, .strip-label, .strip-body, #tech-sheet, #format-sheet, .tech-backdrop, html.faq-js .faq-answer, html.faq-js .faq-answer-inner, .faq-q-text, .faq-icon::before, .faq-icon::after, .faq-nav-link, .faq-nav-link::before, .faq-item::before, .gift-chip { transition: none; }
       html { scroll-behavior: auto; }
     }
   </style>
@@ -619,9 +660,10 @@
         <span class="m-menu-btn-line" aria-hidden="true"></span>
         <span class="m-menu-btn-line" aria-hidden="true"></span>
       </button>
-      <button type="button" id="theme-toggle" class="hidden lg:inline-flex items-center justify-center w-11 h-11 border border-foreground/25 hover:border-accent hover:text-accent transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none" aria-pressed="false" aria-label="Переключить тему">
-        <svg class="theme-icon-sun w-[18px] h-[18px]" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34L48,36.69A8,8,0,0,0,36.69,48ZM48,136H24a8,8,0,0,0,0,16H48a8,8,0,0,0,0-16Zm21.66,85.66-24-24a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-11.32-11.32l-24,24A8,8,0,0,0,192,72Zm5.66,138.34a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32-11.32l-24-24ZM232,136H208a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg>
-        <svg class="theme-icon-moon w-[18px] h-[18px]" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></svg>
+      <button type="button" id="theme-toggle" class="theme-switch hidden lg:inline-flex" aria-pressed="false" aria-label="Переключить тему">
+        <svg class="theme-icon-sun" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34L48,36.69A8,8,0,0,0,36.69,48ZM48,136H24a8,8,0,0,0,0,16H48a8,8,0,0,0,0-16Zm21.66,85.66-24-24a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l24-24a8,8,0,0,0-11.32-11.32l-24,24A8,8,0,0,0,192,72Zm5.66,138.34a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32-11.32l-24-24ZM232,136H208a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg>
+        <svg class="theme-icon-moon" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></svg>
+        <span class="theme-knob" aria-hidden="true"></span>
       </button>
       <a href="#zapis" class="magnetic hidden lg:inline-flex items-center justify-center min-h-[44px] px-6 border border-foreground/25 text-[13px] uppercase tracking-[0.14em] hover:border-accent hover:text-accent transition-colors duration-300 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
         Записаться
@@ -1209,6 +1251,82 @@
         <div class="tech-sheet-handle" aria-hidden="true"></div>
         <button type="button" class="tech-sheet-close" aria-label="Закрыть описание">×</button>
         <div class="tech-sheet-content"></div>
+      </div>
+    </section>
+
+    <!-- ══════════ ПОДАРОЧНЫЙ СЕРТИФИКАТ ══════════ -->
+    <section id="sertifikat" class="px-6 lg:px-12 py-24 lg:py-40 border-t border-border" aria-labelledby="sertifikat-title">
+      <div class="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-12 items-center">
+
+        <div class="gift-col">
+          <h2 id="sertifikat-title" class="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.08] tracking-tight mb-6" data-reveal data-m-reveal>
+            Подарочный сертификат
+          </h2>
+          <p class="font-serif italic text-xl lg:text-2xl text-secondary leading-relaxed max-w-xl mb-6" data-reveal data-m-reveal>
+            Подарите не массаж — а несколько часов, после которых человек скажет вам спасибо.
+          </p>
+          <p class="text-secondary max-w-xl leading-relaxed mb-12" data-reveal data-m-reveal>
+            У каждого есть близкий, который всё время откладывает себя на потом: мама, муж, друг с вечно забитой спиной. Сертификат — способ позаботиться, не выбирая за человека: он сам решит, когда прийти.
+          </p>
+
+          <ol class="gift-steps mb-12" data-reveal data-m-reveal="stagger">
+            <li class="gift-step">
+              <span class="gift-step-num" aria-hidden="true">1</span>
+              <div>
+                <h3 class="font-display text-lg mb-1">Напишите мне в Telegram</h3>
+                <p class="text-secondary leading-relaxed">Скажите, кому и какой номинал — подготовлю сертификат в течение дня.</p>
+              </div>
+            </li>
+            <li class="gift-step">
+              <span class="gift-step-num" aria-hidden="true">2</span>
+              <div>
+                <h3 class="font-display text-lg mb-1">Оплатите удобным способом</h3>
+                <p class="text-secondary leading-relaxed">Переводом или наличными при встрече.</p>
+              </div>
+            </li>
+            <li class="gift-step">
+              <span class="gift-step-num" aria-hidden="true">3</span>
+              <div>
+                <h3 class="font-display text-lg mb-1">Передайте подарок</h3>
+                <p class="text-secondary leading-relaxed">Сертификат приходит в мессенджер: можно переслать или показать с телефона.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="gift-chips mb-6" role="group" aria-label="Номинал сертификата" data-reveal data-m-reveal>
+            <button type="button" class="gift-chip" data-amount="4 000 ₽" data-format="Диагностика и первая сессия">4 000 ₽</button>
+            <button type="button" class="gift-chip is-active" data-amount="5 500 ₽" data-format="Сессия метода" aria-pressed="true">5 500 ₽</button>
+            <button type="button" class="gift-chip" data-amount="9 000 ₽" data-format="Глубокая программа">9 000 ₽</button>
+          </div>
+          <p class="text-[13px] uppercase tracking-[0.14em] text-secondary/70 mb-10" data-reveal data-m-reveal>Действует 12 месяцев с даты покупки</p>
+
+          <a href="https://t.me/OlegTsutsiev" target="_blank" rel="noopener" class="inline-flex items-center justify-center min-h-[44px] px-6 border border-foreground/25 text-[13px] uppercase tracking-[0.14em] hover:border-accent hover:text-accent transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none" data-reveal data-m-reveal>
+            Заказать сертификат
+          </a>
+        </div>
+
+        <div class="gift-col">
+          <div class="gift-card-wrap" data-reveal data-m-reveal="fade">
+            <div class="gift-card" id="gift-card">
+              <div class="gift-card-inner">
+                <div class="gift-card-top">
+                  <svg class="h-6 w-auto text-accent" viewBox="36 42 326 242" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M66,76 L138,168 L212,72 V222 H332 V72 M332,222 V254"/></svg>
+                  <span class="font-display tracking-wide">Метод&nbsp;Цуциева</span>
+                </div>
+                <div class="gift-card-mid">
+                  <span class="gift-card-label">Подарочный сертификат</span>
+                  <span class="gift-card-amount font-display" id="gift-card-amount">5 500 ₽</span>
+                  <span class="gift-card-format" id="gift-card-format">Сессия метода</span>
+                </div>
+                <div class="gift-card-bottom">
+                  <span>Действует 12 месяцев</span>
+                  <span>Владикавказ · салон «Филин»</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -2399,6 +2517,49 @@
           gsap.to(capsule, { scale: 1, duration: 0.3, ease: 'back.out(2)', overwrite: 'auto' });
         });
       });
+
+      /* ── Подарочный сертификат: выбор номинала + 3D-tilt карточки ── */
+      (function () {
+        var card = document.getElementById('gift-card');
+        var amountEl = document.getElementById('gift-card-amount');
+        var formatEl = document.getElementById('gift-card-format');
+        if (!card || !amountEl || !formatEl) return;
+
+        var chips = document.querySelectorAll('.gift-chip');
+        chips.forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            chips.forEach(function (c) { c.classList.remove('is-active'); c.removeAttribute('aria-pressed'); });
+            chip.classList.add('is-active');
+            chip.setAttribute('aria-pressed', 'true');
+            amountEl.textContent = chip.dataset.amount;
+            formatEl.textContent = chip.dataset.format;
+            if (!reduceMotion) {
+              gsap.fromTo([amountEl, formatEl], { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', stagger: 0.05, overwrite: 'auto' });
+            }
+          });
+        });
+
+        if (reduceMotion) return;
+        mm.add('(pointer: fine)', function () {
+          var wrap = card.parentElement;
+          var rxTo = gsap.quickTo(card, 'rotationX', { duration: 0.5, ease: 'power3.out' });
+          var ryTo = gsap.quickTo(card, 'rotationY', { duration: 0.5, ease: 'power3.out' });
+          wrap.addEventListener('mousemove', function (e) {
+            var r = card.getBoundingClientRect();
+            var px = (e.clientX - r.left) / r.width;
+            var py = (e.clientY - r.top) / r.height;
+            rxTo((0.5 - py) * 10);
+            ryTo((px - 0.5) * 12);
+            card.style.setProperty('--mx', (px * 100) + '%');
+            card.style.setProperty('--my', (py * 100) + '%');
+          });
+          wrap.addEventListener('mouseleave', function () {
+            rxTo(0); ryTo(0);
+            card.style.setProperty('--mx', '30%');
+            card.style.setProperty('--my', '20%');
+          });
+        });
+      })();
     })();
   </script>
   <script src="/assets/cookie-consent.js" defer></script>
