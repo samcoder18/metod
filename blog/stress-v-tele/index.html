@@ -601,5 +601,16 @@
   </script>
   <script src="/assets/cookie-consent.js" defer></script>
   <script src="/assets/theme.js" defer></script>
+
+  <!-- Цели Яндекс.Метрики: клики по каналам заявки -->
+  <script>
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || !window.ym) return;
+      var href = a.getAttribute('href') || '';
+      if (/^https?:\/\/t\.me\//.test(href)) ym(111162830, 'reachGoal', 'telegram_click');
+      else if (href.indexOf('tel:') === 0) ym(111162830, 'reachGoal', 'phone_click');
+    });
+  </script>
 </body>
 </html>
